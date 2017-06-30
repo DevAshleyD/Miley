@@ -1,0 +1,7 @@
+#!/bin/sh
+
+. env/bin/activate
+
+export DEBUG=''
+export PORT=''
+export DATABASE_URL=''
