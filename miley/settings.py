@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'easy_thumbnails',
     'miley',
     'accounts',
 )
@@ -114,6 +115,10 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = reverse_lazy('dashboard')
 LOGIN_URL = reverse_lazy('login')
 LOGOUT_URL = reverse_lazy('logout')
+
+ABSOLUTE_USER_OVERRIDES = {
+    'auth_user': lambda u: reverse_lazy('user_detail', args=[u.username])
+}
 
 EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
 
