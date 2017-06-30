@@ -5,3 +5,7 @@
 export DEBUG=''
 export PORT=''
 export DATABASE_URL=''
+export SMTP_HOST=''
+export SMTP_USER=''
+export SMTP_PASSWORD=''
+export SMTP_PORT=''
