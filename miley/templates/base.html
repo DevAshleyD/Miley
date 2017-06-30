@@ -5,6 +5,28 @@
     <title>{% block title %}Miley{% endblock %}</title>
   </head>
   <body>
+    {% block header %}
+    <header>
+      {% if request.user.is_authenticated %}
+        <ul>
+          <li>
+            <a href="{% url 'dashboard' %}">Dashboard</a>
+          </li>
+          <li>
+            <a href="{% url 'user_list' %}">Profiles</a>
+          </li>
+        </ul>
+      {% endif %}
+
+      <span class="">
+        {% if request.user.is_authenticated %}
+          Hello {{ request.user.username }}
+        {% else %}
+          <a href="{% url 'login' %}">login</a>
+        {% endif %}
+      </span>
+    </header>
+    {% endblock %}
     {% block content %}{% endblock content %}
   </body>
 </html>

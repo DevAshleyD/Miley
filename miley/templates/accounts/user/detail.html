@@ -2,7 +2,24 @@
 
 {% block content %}
 <h1>{{ user.username }}</h1>
-<img src="{{user.profile.picture}}" alt="{{user.profile.username}}">
+<div class="picture">
+  <img src="{{user.profile.picture}}" alt="{{user.profile.username}}">
+</div>
+
+{% with total_followers=user.followers.count %}
+  followers {{total_followers}}
+{% endwith %}
+{% with total_following=user.followers.count %}
+  following {{total_following}}
+{% endwith %}
+
+<div class="actions">
+  {% if request.user not in user.followers.all %}
+    <button type="button" name="follow" data-id={{user.id}}>Follow</button>
+  {% else %}
+    <button type="button" name="unfollow" data-id={{user.id}}>Unfollow</button>
+  {% endif %}
+</div>
 
 <div class="links">
   <a href="{% url 'user_list' %}">Back</a>
