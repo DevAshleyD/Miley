@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.conf import settings
 from .forms import LoginForm
 
 def user_login(request):
@@ -21,3 +23,11 @@ def user_login(request):
         form = LoginForm()
 
     return render(request, 'accounts/login.html', {'form': form})
+
+def user_logout(request):
+    logout(request)
+    return redirect('{}?next={}'.format(settings.LOGIN_URL, request.path))
+
+@login_required
+def dashboard(request):
+    return render(request, 'accounts/dashboard.html', {'section': 'dashboard'})
