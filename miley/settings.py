@@ -109,8 +109,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_URL = '/static/'
-
+STATIC_URL = '/public/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'miley', 'public'),
+)
 
 LOGIN_REDIRECT_URL = reverse_lazy('dashboard')
 LOGIN_URL = reverse_lazy('login')

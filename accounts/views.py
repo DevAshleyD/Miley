@@ -6,6 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods, require_POST
 from django.conf import settings
 from .forms import LoginForm
+from .models import Contact
+import json
 
 def user_login(request):
     if request.method == 'POST':
@@ -51,8 +53,9 @@ def user_detail(request, username):
 @require_POST
 @login_required
 def user_follow(request):
-    user_id = request.POST.get('id')
-    action = request.POST.get('action')
+    json_data = json.loads(request.body)
+    user_id = json_data['id']
+    action = json_data['action']
     if user_id and action:
         try:
             user = User.objects.get(id=user_id)

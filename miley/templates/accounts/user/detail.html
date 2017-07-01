@@ -9,15 +9,27 @@
 {% with total_followers=user.followers.count %}
   followers {{total_followers}}
 {% endwith %}
-{% with total_following=user.followers.count %}
+{% with total_following=user.following.count %}
   following {{total_following}}
 {% endwith %}
 
+
 <div class="actions">
   {% if request.user not in user.followers.all %}
-    <button type="button" name="follow" data-id={{user.id}}>Follow</button>
+    <button type="button"
+      name="follow"
+      data-id={{user.id}}
+      data-action="follow"
+      data-url="{% url 'user_follow' %}"
+      onclick="follow(this)">Follow</button>
   {% else %}
-    <button type="button" name="unfollow" data-id={{user.id}}>Unfollow</button>
+    <button
+      type="button"
+      name="unfollow"
+      data-id={{user.id}}
+      data-action="unfollow"
+      data-url="{% url 'user_follow' %}"
+      onclick="follow(this)">Unfollow</button>
   {% endif %}
 </div>
 
