@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'easy_thumbnails',
     'miley',
+    'blog',
     'accounts',
     'activities',
 )
