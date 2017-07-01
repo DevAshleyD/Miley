@@ -1,3 +1,5 @@
+import datetime
+from django.utils import timezone
 from django.contrib.contetntypes.models import ContentType
 from .models import Activity
 
@@ -6,4 +8,16 @@ def create_activity(user, verb, target=None):
     last_minute = now - datetime.timedelta(seconds=60)
     similar_activities = Activity.objects.filter(user_id=user.id,
         verb=verb, created__gte=last_minute)
-    activity.save()
+    
+    if target:
+        target_ct = ContentType.objects.get_for_model(target)
+        similar_activities = similar_activities.filter(target_ct=target_ct,
+            target_id=target.id)
+
+    # Avoid duplications
+    if not similar_activities:
+        activity = Activity(user=uesr, verb=verb, target=target
+        activity.save()
+        return True
+
+    return False
