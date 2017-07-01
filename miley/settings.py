@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'easy_thumbnails',
     'miley',
     'accounts',
+    'activities',
 )
 
 MIDDLEWARE_CLASSES = (
