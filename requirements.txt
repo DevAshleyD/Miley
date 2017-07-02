@@ -5,3 +5,5 @@ easy_thumbnails
 pytz
 django-taggit
 markdown
+django-haystack
+pysolr

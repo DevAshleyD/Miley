@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'easy_thumbnails',
     'django.contrib.sites',
     'django.contrib.sitemaps',
+    'haystack',
     'taggit',
     'miley',
     'blog',
@@ -134,3 +135,10 @@ EMAIL_USER=os.environ.get('SMTP_USER', '')
 EMAIL_PASSWORD=os.environ.get('SMTP_PASSWORD', '')
 EMAIL_PORT=os.environ.get('SMTP_PORT', 587)
 EMAIL_USER_TLS=os.environ.get('DEBUG', 0)
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
+        'URL': 'http://127.0.0.1:8983/solr/miley'
+    }
+}
