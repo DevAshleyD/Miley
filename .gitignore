@@ -101,6 +101,6 @@ ENV/
 .DS_Store
 .profile
 tmp
-uploads/
 media/
-
+/public/
+/cache

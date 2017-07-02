@@ -27,7 +27,8 @@ SECRET_KEY = '=eyvhik^@a5q8ua&$^r-&yzo)2@i@6djhx%^5)d3h9zgv3l*w_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 0)
-TEMPLATE_DEBUG=True
+TEMPLATE_DEBUG = os.environ.get('DEBUG', 0)
+THUMBNAIL_DEBUG = os.environ.get('DEBUG', 0)
 
 ALLOWED_HOSTS = []
 
@@ -79,6 +80,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'debug': True,
         },
     },
 ]
@@ -121,7 +123,7 @@ USE_TZ = True
 STATIC_URL = '/public/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'miley', 'public'),
-    os.path.join(BASE_DIR, 'uploads'),
+    os.path.join(BASE_DIR, 'public'),
 )
 
 LOGIN_REDIRECT_URL = reverse_lazy('dashboard')

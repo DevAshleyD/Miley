@@ -3,19 +3,13 @@
 
 {% block content %}
   <h1>{{image.name}}</h1>
-  <figure>
-    {{image.image}}
-    <br>
-    {{image.url}}
-    <br>
     {% thumbnail image.image '320' crop='smart' as image_thumbnail %}
     <p>Hello</p>
-    <img src="{{image_thumbnail.url}}" alt="{{image.name}}">
-      <a href="{{image.image.url}}">
-        <img src="{{image_thumbnail.url}}" alt="{{image.name}}">
+      <a href="/{{image.image.url}}">
+        <!-- <img src="/{{image_thumbnail.url}}" alt="{{image.name}}"> -->
+        <img src="/{{image.image.url}}" alt="{{image.name}}">
       </a>
     {% endthumbnail %}
-    <img src="/{{image.image}}" alt="{{image.name}}" title="{{image.name}}">
 
     <figcaption>{{image.description|linebreaks}}</figcaption>
   </figure>

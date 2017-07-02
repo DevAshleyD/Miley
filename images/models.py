@@ -3,6 +3,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.utils.text import slugify
 from django.core.urlresolvers import reverse
+from sorl.thumbnail import ImageField
 
 class Image(models.Model):
     user = models.ForeignKey(User,
@@ -10,7 +11,7 @@ class Image(models.Model):
     name = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, blank=True)
     url = models.URLField()
-    image = models.ImageField(upload_to='uploads/images/%Y/%m/%d')
+    image = models.ImageField(upload_to='public/images/%Y/%m/%d')
     description = models.TextField(blank=True)
     created = models.DateTimeField(auto_now_add=True,
         db_index=True)
