@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+{% block content %}
+  <h1>{{image.name}}</h1>
+  <figure>
+    {{image.image}}
+    <br>
+    {{image.url}}
+    <br>
+    {% thumbnail image.image '320' crop='smart' as image_thumbnail %}
+    <p>Hello</p>
+    <img src="{{image_thumbnail.url}}" alt="{{image.name}}">
+      <a href="{{image.image.url}}">
+        <img src="{{image_thumbnail.url}}" alt="{{image.name}}">
+      </a>
+    {% endthumbnail %}
+    <img src="/{{image.image}}" alt="{{image.name}}" title="{{image.name}}">
+
+    <figcaption>{{image.description|linebreaks}}</figcaption>
+  </figure>
+  <div class="meta">
+    {% with total_links=image.users_like.count users_link=image.users_like.all %}
+    {{total_likes}} like{{tota_likes|pluralize}}
+    {% endwith %}
+  </div>
+  <div class="likes">
+    {% for user in image.users_like.all %}
+    <div class="">
+      <img src="{{user.profile.photo.url}}" alt="{{user.username}}">
+      <span>{{user.username}}</span>
+    </div>
+    {% empty %}
+      <p>No likes for this image yet.</p>
+    {% endfor %}
+  </div>
+{% endblock %}

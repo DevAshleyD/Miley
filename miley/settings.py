@@ -27,6 +27,7 @@ SECRET_KEY = '=eyvhik^@a5q8ua&$^r-&yzo)2@i@6djhx%^5)d3h9zgv3l*w_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 0)
+TEMPLATE_DEBUG=True
 
 ALLOWED_HOSTS = []
 
@@ -45,6 +46,7 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'haystack',
     'taggit',
+    'sorl.thumbnail',
     'miley',
     'blog',
     'images',
@@ -119,6 +121,7 @@ USE_TZ = True
 STATIC_URL = '/public/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'miley', 'public'),
+    os.path.join(BASE_DIR, 'uploads'),
 )
 
 LOGIN_REDIRECT_URL = reverse_lazy('dashboard')

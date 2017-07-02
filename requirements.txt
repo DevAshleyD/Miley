@@ -7,3 +7,4 @@ django-taggit
 markdown
 django-haystack
 pysolr
+sorl-thumbnail
