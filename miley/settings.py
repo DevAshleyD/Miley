@@ -127,6 +127,7 @@ ABSOLUTE_USER_OVERRIDES = {
 EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
 
 EMAIL_HOST=os.environ.get('SMTP_HOST', 'localhost')
-EMAIL_USER=os.environ.get('SMTP_USER')
-EMAIL_PASSWORD=os.environ.get('SMTP_PASSWORD')
+EMAIL_USER=os.environ.get('SMTP_USER', '')
+EMAIL_PASSWORD=os.environ.get('SMTP_PASSWORD', '')
 EMAIL_PORT=os.environ.get('SMTP_PORT', 587)
+EMAIL_USER_TLS=os.environ.get('DEBUG', 0)

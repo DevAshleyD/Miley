@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% if sent %}
+    <h1>Email was successfully sent</h1>
+    <p>"{{post.title}}" was successfully sent by email</p>
+  {% else %}
+    <h1>Share "{{post.title}}" by email</h1>
+    <form class="" action="" method="post">
+      {{ form.as_ul }}
+      {% csrf_token %}
+      <input type="submit" name="submit" value="Send">
+    </form>
+  {% endif %}
+{% endblock %}

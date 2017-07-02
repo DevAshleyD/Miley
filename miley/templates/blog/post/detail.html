@@ -6,5 +6,8 @@
     <div class="">
       {{post.body|safe}}
     </div>
+    <div class="actions">
+      <a href="{% url 'blog:post_share' post.id %}">Share this post</a>
+    </div>
   </article>
 {% endblock %}
