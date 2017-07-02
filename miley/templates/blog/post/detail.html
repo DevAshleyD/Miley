@@ -4,7 +4,7 @@
   <article class="">
     <h1>{{post.title}}</h1>
     <div class="">
-      {{post.body|safe}}
+      {{post.body|markdown}}
     </div>
     <div class="actions">
       <a href="{% url 'blog:post_share' post.id %}">Share this post</a>
@@ -19,7 +19,7 @@
         <div class="meta">
           Comment {{forloop.counter}} by {{comment.name}} {{comment.created}}
         </div>
-        {{comment.body|linebreaks}}
+        {{comment.body|markdown}}
       </div>
     {% endfor %}
   </div>

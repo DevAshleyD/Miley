@@ -4,3 +4,4 @@ Pillow
 easy_thumbnails
 pytz
 django-taggit
+markdown
