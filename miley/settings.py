@@ -47,6 +47,7 @@ INSTALLED_APPS = (
     'taggit',
     'miley',
     'blog',
+    'images',
     'accounts',
     'activities',
 )
