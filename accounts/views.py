@@ -41,6 +41,8 @@ def dashboard(request):
     if following_ids:
         activities = activities.filter(user_id__in=following_ids).select_related('user', 'user__profile').prefetch_related('target')
     activities = activities[:10]
+
+    activities = Activity.objects.all()
     return render(request, 'accounts/dashboard.html', {'section': 'dashboard',
         'activities': activities})
 
