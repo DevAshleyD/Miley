@@ -41,6 +41,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'easy_thumbnails',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     'taggit',
     'miley',
     'blog',
