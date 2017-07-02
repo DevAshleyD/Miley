@@ -7,4 +7,7 @@
       <a href="{{post.get_absolute_url}}">{{post.title}}</a>
     </div>
   {% endfor %}
+
+  {% include 'blog/pagination.html' with page=posts %}
+
 {% endblock %}
