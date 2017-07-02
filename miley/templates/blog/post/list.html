@@ -4,6 +4,7 @@
 {% block content %}
   <h1>Posts</h1>
   <p>There are {% total_posts %} posts</p>
+  <p>Subscribe <a href="{% url 'blog:post_feed' %}">here</a></p>
 
   {% if tag %}
     <h2>Posts tagged with "{{tag.name}}"</h2>
