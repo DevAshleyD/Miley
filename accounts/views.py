@@ -10,6 +10,7 @@ from .models import Contact
 from activities.models import Activity
 import json
 from activities.utils import create_activity
+from shop.models import Product
 
 def user_login(request):
     if request.method == 'POST':
@@ -56,9 +57,11 @@ def user_list(request):
 @login_required
 def user_detail(request, username):
     user = get_object_or_404(User, username=username)
+    products = Product.objects.filter(user=user)
     return render(request, 'accounts/user/detail.html',
         {'section': 'people',
-        'user': user})
+        'user': user,
+        'products': products})
 
 @require_POST
 @login_required

@@ -33,6 +33,23 @@
   {% endif %}
 </div>
 
+<div class="products">
+  <h2>My Store</h2>
+  {% for product in products %}
+    <div class="product">
+      <div class="picture">
+        <a href="">
+          <img width="80" src="/{{product.image.url}}" alt="{{product.name}}">
+        </a>
+      </div>
+      <strong>{{product.name}}</strong>
+      <div class="meta">
+        {{product.price}}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
 <div class="links">
   <a href="{% url 'user_list' %}">Back</a>
 </div>
