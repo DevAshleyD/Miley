@@ -127,6 +127,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'miley', 'public'),
     os.path.join(BASE_DIR, 'public'),
 )
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media/'),
 
 LOGIN_REDIRECT_URL = reverse_lazy('dashboard')
 LOGIN_URL = reverse_lazy('login')
@@ -154,3 +156,5 @@ HAYSTACK_CONNECTIONS = {
 REDIS_HOST=os.environ.get('REDIS_HOST', 'localhost')
 REDIS_PORT=os.environ.get('REDIS_PORT', 6379)
 REDIS_DATABASE=os.environ.get('REDIS_DATABASE', 0)
+
+CART_SESSION_ID = 'cart_sid'

@@ -1,4 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
+  <h1>{{product.name}}</h1>
+  <div class="picture">
+    <img width="120" src="/{{product.image}}" alt="{{product.name}}">
+  </div>
+  <div class="description">
+    {{product.description}}
+  </div>
+  <div class="meta">
+    <dl class="">
+      <dt>Category</dt>
+      <dd><a href="{{product.category.get_absolute_url}}">{{product.category.name}}</a></dd>
+      <dt>Price</dt>
+      <dd>{{product.price}}</dd>
+      <dt>Owner</dt>
+      <dd>{{product.user}}</dd>
+      <dt>Created</dt>
+      <dd>{{product.created}}</dd>
+    </dl>
+  </div>
 {% endblock %}
