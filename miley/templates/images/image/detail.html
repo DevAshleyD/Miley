@@ -22,7 +22,7 @@
   <div class="likes">
     {% for user in image.users_like.all %}
     <div class="">
-      <img src="{{user.profile.photo.url}}" alt="{{user.username}}">
+      <img src="{{user.profile.picture}}" alt="{{user.username}}">
       <span>{{user.username}}</span>
     </div>
     {% empty %}
