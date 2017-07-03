@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Your shopping cart</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Unit price</th>
+      <th>Price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in cart %}
+      <tr>
+        <td>
+          <a href="{{product.get_absolute_url}}">
+            {{item.product.name}}
+          </a>
+        </td>
+        <td>
+          <form class="" action="{% url 'shop:cart_add' item.product.id %}" method="post">
+            {{ item.update_quantity_form.quantity }}
+            {{ item.update_quantity_form.update }}
+            {% csrf_token %}
+            <input type="submit" name="submit" value="Update">
+          </form>
+        </td>
+        <td>{{item.price}}</td>
+        <td>{{item.total_price}}</td>
+        <td>
+          <button
+            type="button"
+            name="remove">Remove</button>
+          <a href="{% url 'shop:cart_remove' item.product.id %}">Remove</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

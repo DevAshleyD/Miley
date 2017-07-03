@@ -20,4 +20,9 @@
       <dd>{{product.created}}</dd>
     </dl>
   </div>
+  <form class="" action="{% url 'shop:cart_add' product.id %}" method="post">
+    {{cart_product_form}}
+    {% csrf_token %}
+    <input type="submit" name="submit" value="Add to cart">
+  </form>
 {% endblock %}
