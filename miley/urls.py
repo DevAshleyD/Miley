@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^blog/', include('blog.urls', namespace='blog', app_name='blog')),
     url(r'^images/', include('images.urls', namespace='images', app_name='images')),
     url(r'^accounts/', include('accounts.urls')),
+    url(r'^shop/', include('shop.urls', namespace='shop', app_name='shop')),
 ]
