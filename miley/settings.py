@@ -54,6 +54,7 @@ INSTALLED_APPS = (
     'images',
     'accounts',
     'activities',
+    'shop',
 )
 
 MIDDLEWARE_CLASSES = (
