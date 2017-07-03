@@ -8,3 +8,4 @@ markdown
 django-haystack
 pysolr
 sorl-thumbnail==12.3
+redis

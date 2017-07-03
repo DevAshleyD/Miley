@@ -148,3 +148,7 @@ HAYSTACK_CONNECTIONS = {
         'URL': 'http://127.0.0.1:8983/solr/miley'
     }
 }
+
+REDIS_HOST=os.environ.get('REDIS_HOST', 'localhost')
+REDIS_PORT=os.environ.get('REDIS_PORT', 6379)
+REDIS_DATABASE=os.environ.get('REDIS_DATABASE', 0)

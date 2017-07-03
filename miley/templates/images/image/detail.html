@@ -15,7 +15,8 @@
   </figure>
   <div class="meta">
     {% with total_links=image.users_like.count users_link=image.users_like.all %}
-    {{total_likes}} like{{tota_likes|pluralize}}
+    <span>{{total_likes}} like{{tota_likes|pluralize}}</span>
+    <span>{{total_views}} view{{total_views|pluralize}}</span>
     {% endwith %}
   </div>
   <div class="likes">
