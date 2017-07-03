@@ -19,6 +19,25 @@
     <span>{{total_views}} view{{total_views|pluralize}}</span>
     {% endwith %}
   </div>
+  <div class="actions">
+    {% if request.user not in users_like %}
+      <button
+        type="button"
+        name="like"
+        data-id={{image.id}}
+        data-action="like"
+        data-url="{% url 'images:like' %}"
+        onclick="imageLike(this)">Like</button>
+    {% else %}
+      <button
+        type="button"
+        name="like"
+        data-id={{image.id}}
+        data-action="unlike"
+        data-url="{% url 'images:like' %}"
+        onclick="imageLike(this)">Unlike</button>
+    {% endif %}
+  </div>
   <div class="likes">
     {% for user in image.users_like.all %}
     <div class="">

@@ -1,0 +1,16 @@
+{% load thumbnail %}
+
+{% for image in images %}
+  <div class="image">
+    <a href="{{image.get_absolute_url}}">
+      <figure>
+        {% thumbnail image.image '320x320' crop='100%' as thumbnail_image %}
+          <img src="{{thumbnail_image.url}}" alt="{{image.name}}">
+        {% endthumbnail %}
+        <figcaption>
+          <a href="{{image.get_absolute_url}}">{{image.name}}</a>
+        </figcaption>
+      </figure>
+    </a>
+  </div>
+{% endfor %}

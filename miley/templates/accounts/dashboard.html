@@ -4,7 +4,10 @@
 <h1>Dashboard</h1>
 
 {% with total_images_created=request.user.images_created.count %}
-  <p>You have bookmarked {{total_images_created}} image{{total_images_created|pluralize}}</p>
+  <p>
+    You have bookmarked
+    <a href="{% url 'images:list' %}">{{total_images_created}} image{{total_images_created|pluralize}}</a>
+  </p>
 {% endwith %}
 
 <h2>Activities</h2>

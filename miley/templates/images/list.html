@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+{% block content %}
+  <h1>Image list</h1>
+  {% for image in images %}
+  <figure>
+    <a href="{{image.get_absolute_url}}">
+      {% thumbnail image.url '40x40' crop='100%' as image_thumbnail %}
+      {{image_thumbnail.url}}
+        <img width="120" src="{{image_thumbnail.url}}" alt="{{image.name}}">
+      {% endthumbnail %}
+    </a>
+    <figcaption>{{image.name}}</figcaption>
+  </figure>
+  {% endfor %}
+{% endblock %}
