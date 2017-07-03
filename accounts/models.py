@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 
 class Contact(models.Model):
     user_from = models.ForeignKey(User, related_name='rel_from_set')
@@ -18,6 +19,9 @@ class Profile(models.Model):
 
     def __str__(self):
         return 'Profile for user {}'.format(self.user.username)
+
+    def get_absolute_url(self):
+        return reverse('user_detail', args=[self.user.username])
 
 # Add the following field to User dynamically
 User.add_to_class('following', models.ManyToManyField('self', through=Contact,

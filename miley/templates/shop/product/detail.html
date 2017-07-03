@@ -15,7 +15,7 @@
       <dt>Price</dt>
       <dd>{{product.price}}</dd>
       <dt>Owner</dt>
-      <dd>{{product.user}}</dd>
+      <dd><a href="{{product.user.profile.get_absolute_url}}">{{product.user}}</a></dd>
       <dt>Created</dt>
       <dd>{{product.created}}</dd>
     </dl>
