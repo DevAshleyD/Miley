@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Image ranking</h1>
+  {% for image in most_viewed %}
+    <div class="">
+      <figure>
+        <a href="{{image.get_absolute_url}}">
+          <img src="{{image.url}}" alt="{{image.name}}">
+        </a>
+        <figcaption>
+          <a href="{{image.get_absolute_url}}">{{image.name}}</a>
+        </figcaption>
+      </figure>
+    </div>
+  {% endfor %}
+{% endblock %}
