@@ -20,7 +20,7 @@
     {% endwith %}
   </div>
   <div class="actions">
-    {% if request.user not in users_like %}
+    {% if request.user not in image.users_like.all %}
       <button
         type="button"
         name="like"
@@ -41,8 +41,9 @@
   <div class="likes">
     {% for user in image.users_like.all %}
     <div class="">
-      <img src="{{user.profile.picture}}" alt="{{user.username}}">
+      <img width="40" src="{{user.profile.picture}}" alt="{{user.username}}">
       <span>{{user.username}}</span>
+      <span>liked this picture</span>
     </div>
     {% empty %}
       <p>No likes for this image yet.</p>

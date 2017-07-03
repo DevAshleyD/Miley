@@ -9,6 +9,7 @@ from .models import Image
 from activities.utils import create_activity
 from common.decorators import ajax_required
 import redis
+import json
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 rdis = redis.StrictRedis(host=settings.REDIS_HOST,
@@ -61,12 +62,13 @@ def image_list(request):
     return render(request, 'images/list.html', {'section': 'images',
         'images': images})
 
-@ajax_required
+# @ajax_required
 @login_required
 @require_POST
 def image_like(request):
-    image_id = request.POST.get('id')
-    action = request.POST.get('action')
+    json_data = json.loads(request.body)
+    image_id = json_data['id']
+    action = json_data['action']
     if image_id and action:
         try:
             image = Image.objects.get(id=image_id)
