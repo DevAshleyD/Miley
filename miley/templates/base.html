@@ -38,6 +38,14 @@
       <span class="">
         {% if request.user.is_authenticated %}
           Hello {{ request.user.username }}
+          {% with total_items=cart|length %}
+            {% if total_items > 0 %}
+            your cart has
+              <a href="{% url 'shop:cart_detail'%}">{{total_items}} item{{total_items|pluralize}}</a>
+            {% else %}
+            your cart is empty
+            {% endif %}
+          {% endwith %}
         {% else %}
           <a href="{% url 'login' %}">login</a>
         {% endif %}
