@@ -56,6 +56,7 @@ INSTALLED_APPS = (
     'accounts',
     'activities',
     'shop',
+    'payments',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -162,4 +163,4 @@ REDIS_DATABASE=os.environ.get('REDIS_DATABASE', 0)
 CART_SESSION_ID = 'cart_sid'
 
 PAYPAL_RECEIVER_EMAIL=os.environ.get('PAYPAL_RECEIVER_EMAIL')
-PAYPAL_TEST=os.environ.get('PAYPAL_TEST')
+PAYPAL_TEST=bool(os.environ.get('PAYPAL_TEST'))

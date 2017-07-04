@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^images/', include('images.urls', namespace='images', app_name='images')),
     url(r'^accounts/', include('accounts.urls')),
     url(r'^paypal/', include('paypal.standard.ipn.urls')),
+    url(r'^payments/', include('payments.urls', namespace='payments', app_name='payments')),
     url(r'^shop/', include('shop.urls', namespace='shop', app_name='shop')),
 ]
 

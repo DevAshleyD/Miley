@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.core.urlresolvers import reverse
 from django.views.decorators.http import require_POST
 from .models import Category, Product, Cart, OrderItem
 from .forms import CartAddProductForm, OrderCreateForm
@@ -62,8 +63,12 @@ def order_create(request):
                     price=item['price'],
                     quantity=item['quantity'])
             cart.clear()
-            order_created.delay(order.id)
-            return render(request, 'shop/orders/created.html', {'order': order})
+            # order_created.delay(order.id)
+
+            # return render(request, 'shop/orders/created.html', {'order': order})
+
+            request.session['order_id'] = order.id
+            return redirect(reverse('payments:process'))
     else:
         form = OrderCreateForm()
     return render(request, 'shop/orders/create.html', {'cart': cart,
