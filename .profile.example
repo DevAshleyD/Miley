@@ -13,3 +13,5 @@ export REDIS_HOST=''
 export REDIS_PORT=''
 export REDIS_DB=''
 export RABBITMQ_URI='amqp://test:test@localhost/miley'
+export PAYPAL_RECEIVER_EMAIL=''
+export PAYPAL_TEST=True

@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'haystack',
     'taggit',
     'sorl.thumbnail',
+    'paypal.standard.ipn',
     'miley',
     'blog',
     'images',
@@ -159,3 +160,6 @@ REDIS_PORT=os.environ.get('REDIS_PORT', 6379)
 REDIS_DATABASE=os.environ.get('REDIS_DATABASE', 0)
 
 CART_SESSION_ID = 'cart_sid'
+
+PAYPAL_RECEIVER_EMAIL=os.environ.get('PAYPAL_RECEIVER_EMAIL')
+PAYPAL_TEST=os.environ.get('PAYPAL_TEST')
