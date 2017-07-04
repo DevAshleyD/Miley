@@ -41,4 +41,8 @@
     {% endfor %}
   </tbody>
 </table>
+<div class="">
+  <a href="{% url 'shop:product_list' %}">Continue shopping</a>
+  <a href="{% url 'shop:order_create' %}">Checkout</a>
+</div>
 {% endblock %}
