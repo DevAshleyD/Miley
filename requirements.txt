@@ -12,3 +12,4 @@ redis
 pillow
 celery
 django-paypal
+weasyprint
