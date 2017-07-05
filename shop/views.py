@@ -6,7 +6,7 @@ from django.views.decorators.http import require_POST
 from .models import Category, Product, Cart, Order, OrderItem
 from .forms import CartAddProductForm, OrderCreateForm
 from .tasks import order_created
-# import weasyprint
+import weasyprint
 
 def product_list(request, category_slug=None):
     category = None
@@ -88,6 +88,6 @@ def admin_order_pdf(request, order_id):
     html = render_to_string('orders/order/pdf.html', {'order': order})
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'filename="order_{}.pdf"'.format(order.id)
-    # weasyprint.HTML(string=html).write_pdf(response,
-    #     stylesheets=[weasypring.CSS(settings.STATIC_ROOT + 'css/pdf.css')])
+    weasyprint.HTML(string=html).write_pdf(response,
+        stylesheets=[weasypring.CSS(settings.STATIC_ROOT + 'css/pdf.css')])
     return response
