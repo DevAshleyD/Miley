@@ -1,3 +1,5 @@
+$borderDivider: 1px solid #BDBDBD;
+
 body{
   background: #fafafa;
   font-family: "open Sans", sans-serif;
@@ -7,7 +9,7 @@ body{
 
 .navbar{
   background: #fff;
-  border-bottom: 1px solid #BDBDBD;
+  border-bottom: $borderDivider;
   height: 48px;
 }
 .navbar .logo{
@@ -53,4 +55,8 @@ body{
   font-weight: 300;
   margin: 0;
   padding: 0;
+}
+
+#footer{
+  border-top: $borderDivider;
 }
