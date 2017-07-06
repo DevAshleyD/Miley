@@ -11,47 +11,50 @@
   <body>
     {% block header %}
     <header>
-      {% if request.user.is_authenticated %}
-        <ul>
-          <li>
-            <a href="{% url 'dashboard' %}">Dashboard</a>
-          </li>
-          <li>
-            <a href="{% url 'blog:post_list' %}">Posts</a>
-          </li>
-          <li>
-            <a href="{% url 'user_list' %}">Profiles</a>
-          </li>
-          <li>
-            <a href="{% url 'shop:product_list' %}">Shop</a>
-          </li>
-          <li>
-            <a href="{% url 'images:ranking' %}">Top Images</a>
-          </li>
-        </ul>
-      {% else %}
-        <ul>
-          <li>
-            <a href="{% url 'blog:post_list' %}">Posts</a>
-          </li>
-        </ul>
-      {% endif %}
-
-      <span class="">
+      <div class="top navbar">
+        {% block logo %}<span class="logo">Miley</span>{% endblock %}
         {% if request.user.is_authenticated %}
-          Hello {{ request.user.username }}
-          {% with total_items=cart|length %}
-            {% if total_items > 0 %}
-            your cart has
-              <a href="{% url 'shop:cart_detail'%}">{{total_items}} item{{total_items|pluralize}}</a>
-            {% else %}
-            your cart is empty
-            {% endif %}
-          {% endwith %}
+          <ul>
+            <li>
+              <a href="{% url 'dashboard' %}">Dashboard</a>
+            </li>
+            <li>
+              <a href="{% url 'blog:post_list' %}">Posts</a>
+            </li>
+            <li>
+              <a href="{% url 'user_list' %}">Profiles</a>
+            </li>
+            <li>
+              <a href="{% url 'shop:product_list' %}">Shop</a>
+            </li>
+            <li>
+              <a href="{% url 'images:ranking' %}">Top Images</a>
+            </li>
+          </ul>
         {% else %}
-          <a href="{% url 'login' %}">login</a>
+          <ul>
+            <li>
+              <a href="{% url 'blog:post_list' %}">Posts</a>
+            </li>
+          </ul>
         {% endif %}
-      </span>
+
+        <span class="">
+          {% if request.user.is_authenticated %}
+            Hello {{ request.user.username }}
+            {% with total_items=cart|length %}
+              {% if total_items > 0 %}
+              your cart has
+                <a href="{% url 'shop:cart_detail'%}">{{total_items}} item{{total_items|pluralize}}</a>
+              {% else %}
+              your cart is empty
+              {% endif %}
+            {% endwith %}
+          {% else %}
+            <a href="{% url 'login' %}">login</a>
+          {% endif %}
+        </span>
+      </div>
     </header>
     {% endblock %}
     {% block content %}{% endblock content %}
