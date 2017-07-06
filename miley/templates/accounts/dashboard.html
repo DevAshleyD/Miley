@@ -1,20 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Dashboard</h1>
+<div id="main-content">
+  <div class="container">
+    <h1>Dashboard</h1>
 
-{% with total_images_created=request.user.images_created.count %}
-  <p>
-    You have bookmarked
-    <a href="{% url 'images:list' %}">{{total_images_created}} image{{total_images_created|pluralize}}</a>
-  </p>
-{% endwith %}
+    {% with total_images_created=request.user.images_created.count %}
+      <p>
+        You have bookmarked
+        <a href="{% url 'images:list' %}">{{total_images_created}} image{{total_images_created|pluralize}}</a>
+      </p>
+    {% endwith %}
 
-<h2>Activities</h2>
-<div class="activity-list">
-  {% for activity in activities %}
-    {% include 'activities/activity/detail.html' %}
-  {% endfor %}
+    <h2>Activities</h2>
+    <div class="activities">
+      {% for activity in activities %}
+        {% include 'activities/activity/detail.html' %}
+      {% endfor %}
+    </div>
+  </div>
 </div>
-
 {% endblock %}

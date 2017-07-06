@@ -2,51 +2,55 @@
 {% load thumbnail %}
 
 {% block content %}
-  <h1>{{image.name}}</h1>
-    {% thumbnail image.image '320' crop='smart' as image_thumbnail %}
-    <p>Hello</p>
-      <a href="/{{image.image.url}}">
-        <img src="/{{image.image.url}}" alt="{{image.name}}">
-        <!-- <img src="/{{image_thumbnail.url}}" alt="{{image.name}}"> -->
-      </a>
-    {% endthumbnail %}
+<div class="main-content">
+  <div class="container">
+    <h1>{{image.name}}</h1>
+      {% thumbnail image.image '320' crop='smart' as image_thumbnail %}
+      <p>Hello</p>
+        <a href="/{{image.image.url}}">
+          <img src="/{{image.image.url}}" alt="{{image.name}}">
+          <!-- <img src="/{{image_thumbnail.url}}" alt="{{image.name}}"> -->
+        </a>
+      {% endthumbnail %}
 
-    <figcaption>{{image.description|linebreaks}}</figcaption>
-  </figure>
-  <div class="meta">
-    {% with total_links=image.users_like.count users_link=image.users_like.all %}
-    <span>{{total_likes}} like{{tota_likes|pluralize}}</span>
-    <span>{{total_views}} view{{total_views|pluralize}}</span>
-    {% endwith %}
-  </div>
-  <div class="actions">
-    {% if request.user not in image.users_like.all %}
-      <button
-        type="button"
-        name="like"
-        data-id={{image.id}}
-        data-action="like"
-        data-url="{% url 'images:like' %}"
-        onclick="imageLike(this)">Like</button>
-    {% else %}
-      <button
-        type="button"
-        name="like"
-        data-id={{image.id}}
-        data-action="unlike"
-        data-url="{% url 'images:like' %}"
-        onclick="imageLike(this)">Unlike</button>
-    {% endif %}
-  </div>
-  <div class="likes">
-    {% for user in image.users_like.all %}
-    <div class="">
-      <img width="40" src="{{user.profile.picture}}" alt="{{user.username}}">
-      <span>{{user.username}}</span>
-      <span>liked this picture</span>
+      <figcaption>{{image.description|linebreaks}}</figcaption>
+    </figure>
+    <div class="meta">
+      {% with total_links=image.users_like.count users_link=image.users_like.all %}
+      <span>{{total_likes}} like{{tota_likes|pluralize}}</span>
+      <span>{{total_views}} view{{total_views|pluralize}}</span>
+      {% endwith %}
     </div>
-    {% empty %}
-      <p>No likes for this image yet.</p>
-    {% endfor %}
+    <div class="actions">
+      {% if request.user not in image.users_like.all %}
+        <button
+          type="button"
+          name="like"
+          data-id={{image.id}}
+          data-action="like"
+          data-url="{% url 'images:like' %}"
+          onclick="imageLike(this)">Like</button>
+      {% else %}
+        <button
+          type="button"
+          name="like"
+          data-id={{image.id}}
+          data-action="unlike"
+          data-url="{% url 'images:like' %}"
+          onclick="imageLike(this)">Unlike</button>
+      {% endif %}
+    </div>
+    <div class="likes">
+      {% for user in image.users_like.all %}
+      <div class="">
+        <img width="40" src="{{user.profile.picture}}" alt="{{user.username}}">
+        <span>{{user.username}}</span>
+        <span>liked this picture</span>
+      </div>
+      {% empty %}
+        <p>No likes for this image yet.</p>
+      {% endfor %}
+    </div>
   </div>
+</div>
 {% endblock %}

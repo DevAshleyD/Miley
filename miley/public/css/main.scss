@@ -31,24 +31,31 @@ a{
   background: #fff;
   border-bottom: $borderDivider;
   height: 48px;
-}
-.navbar .logo{
-  color: #4990E2;
-  font-size: 24px;
-  font-weight: 700;
-}
-.navbar ul {
-  display: inline-block;
-  list-style-type: none;
-  margin: 0;
-}
-.navbar ul li {
-  display: inline-block;
-}
-.navbar a {
-  color: #4A4A4A;
-  padding: 1em;
-  text-decoration: none;
+
+  .logo{
+    color: #4990E2;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    position: relative;
+    top: 0.25em;
+  }
+
+  ul {
+    display: inline-block;
+    list-style-type: none;
+    margin: 0;
+
+    li {
+      display: inline-block;
+    }
+  }
+
+  a {
+    color: #4A4A4A;
+    padding: 1em;
+    text-decoration: none;
+  }
 }
 
 .profile.header {
@@ -85,6 +92,19 @@ form{
 
     li{
       margin: 0 0 1em 0;
+    }
+  }
+}
+
+.activities {
+  .activity {
+    @include clearfix;
+    border: $borderDivider;
+    border-radius: 4px;
+    margin: 0 0 1em 0;
+
+    .picture {
+      float: left;
     }
   }
 }

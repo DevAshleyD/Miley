@@ -1,24 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Checkout</h1>
-<div class="">
-  <h2>Your order</h2>
-  <ul>
-    {% for item in cart %}
-    <li>
-      {{item.quantity}}x{{item.product.name}}
-      <span>&dollar;{{item.total_price}}</span>
-    </li>
-    {% endfor %}
-  </ul>
-  <div class="">
-    <span>Total: <strong>&dollar; {{cart.get_total_price}}</strong></span>
+<div id="main-content">
+  <div class="container">
+    <h1>Checkout</h1>
+    <div class="">
+      <h2>Your order</h2>
+      <ul>
+        {% for item in cart %}
+        <li>
+          {{item.quantity}}x{{item.product.name}}
+          <span>&dollar;{{item.total_price}}</span>
+        </li>
+        {% endfor %}
+      </ul>
+      <div class="">
+        <span>Total: <strong>&dollar; {{cart.get_total_price}}</strong></span>
+      </div>
+    </div>
+    <form class="" action="" method="post">
+      {{form.as_ul}}
+      {% csrf_token %}
+      <input type="submit" name="submit" value="Place order">
+    </form>
   </div>
 </div>
-<form class="" action="" method="post">
-  {{form.as_ul}}
-  {% csrf_token %}
-  <input type="submit" name="submit" value="Place order">
-</form>
 {% endblock %}

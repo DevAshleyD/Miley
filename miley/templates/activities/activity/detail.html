@@ -2,7 +2,7 @@
 
 {% with user=activity.user profile=activity.user.profile %}
 <div class="activity">
-  <div class="images">
+  <div class="picture">
     {% if profile.picture %}
       {% thumbnail user.profile.picture '40x40' crop='100%' as image %}
         <a href="{{user.get_absolute_url}}">

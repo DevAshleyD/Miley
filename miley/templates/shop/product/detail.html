@@ -1,28 +1,32 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>{{product.name}}</h1>
-  <div class="picture">
-    <img width="120" src="/{{product.image}}" alt="{{product.name}}">
+<div id="main-content">
+  <div class="container">
+    <h1>{{product.name}}</h1>
+    <div class="picture">
+      <img width="120" src="/{{product.image}}" alt="{{product.name}}">
+    </div>
+    <div class="description">
+      {{product.description}}
+    </div>
+    <div class="meta">
+      <dl class="">
+        <dt>Category</dt>
+        <dd><a href="{{product.category.get_absolute_url}}">{{product.category.name}}</a></dd>
+        <dt>Price</dt>
+        <dd>{{product.price}}</dd>
+        <dt>Owner</dt>
+        <dd><a href="{{product.user.profile.get_absolute_url}}">{{product.user}}</a></dd>
+        <dt>Created</dt>
+        <dd>{{product.created}}</dd>
+      </dl>
+    </div>
+    <form class="" action="{% url 'shop:cart_add' product.id %}" method="post">
+      {{cart_product_form}}
+      {% csrf_token %}
+      <input type="submit" name="submit" value="Add to cart">
+    </form>
   </div>
-  <div class="description">
-    {{product.description}}
-  </div>
-  <div class="meta">
-    <dl class="">
-      <dt>Category</dt>
-      <dd><a href="{{product.category.get_absolute_url}}">{{product.category.name}}</a></dd>
-      <dt>Price</dt>
-      <dd>{{product.price}}</dd>
-      <dt>Owner</dt>
-      <dd><a href="{{product.user.profile.get_absolute_url}}">{{product.user}}</a></dd>
-      <dt>Created</dt>
-      <dd>{{product.created}}</dd>
-    </dl>
-  </div>
-  <form class="" action="{% url 'shop:cart_add' product.id %}" method="post">
-    {{cart_product_form}}
-    {% csrf_token %}
-    <input type="submit" name="submit" value="Add to cart">
-  </form>
+</div>
 {% endblock %}
