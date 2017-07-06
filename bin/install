@@ -2,3 +2,5 @@
 
 pip install -r requirements.txt
 bundle install
+# bourbon install --path=miley/public/css
+# neat install --path=miley/public/css
