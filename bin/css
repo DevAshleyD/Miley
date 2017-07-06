@@ -1,0 +1,3 @@
+#!/bin/sh
+
+sass --watch --style compressed  miley/public/css/main.scss
