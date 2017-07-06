@@ -2,21 +2,25 @@
 {% load thumbnail %}
 
 {% block content %}
-<h1>Profiles</h1>
-<div class="">
-  {% for user in users %}
-  <div class="card">
+<div id="main-content">
+  <div class="container">
+    <h1>Profiles</h1>
     <div class="">
-      <a href="/accounts/users/{{ user.username }}">
-        {% thumbnail user.profile.picture '180x180' crop='100%' as img %}
-          <img src="{{ user.profile.picture }}" alt="{{user.username}}">
-        {% endthumbnail %}
-      </a>
+      {% for user in users %}
+      <div class="card">
+        <div class="">
+          <a href="/accounts/users/{{ user.username }}">
+            {% thumbnail user.profile.picture '180x180' crop='100%' as img %}
+              <img src="{{ user.profile.picture }}" alt="{{user.username}}">
+            {% endthumbnail %}
+          </a>
+        </div>
+        <a href="/accounts/users/{{ user.username }}">
+          <strong>{{ user.username }}</strong>
+        </a>
+      </div>
+      {% endfor %}
     </div>
-    <a href="/accounts/users/{{ user.username }}">
-      <strong>{{ user.username }}</strong>
-    </a>
   </div>
-  {% endfor %}
 </div>
 {% endblock %}
