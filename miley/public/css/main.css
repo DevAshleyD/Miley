@@ -29,7 +29,28 @@ body{
   text-decoration: none;
 }
 
-.profile-header {
+.profile.header {
   background: #269FF0;
   height: 420px;
+  position: relative;
+}
+.profile.header .picture {
+  border: 4px solid #fff;
+  border-radius: 50%;
+  bottom: -90px;
+  display: block;
+  height: 180px;
+  overflow: hidden;
+  position: absolute;
+  width: 180px;
+}
+.profile.header .picture img {
+  display: block;
+}
+.profile.header .profile.name {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
 }

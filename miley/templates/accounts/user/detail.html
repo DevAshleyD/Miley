@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>{{ user.username }}</h1>
-<div class="picture">
-  <img src="{{user.profile.picture}}" alt="{{user.profile.username}}">
+
+<div class="profile header">
+  <div class="picture">
+    <img src="{{user.profile.picture}}" alt="{{user.profile.username}}">
+  </div>
+  <h1 class="profile name">{{ user.username }}</h1>
 </div>
 
 {% with total_followers=user.followers.count %}
