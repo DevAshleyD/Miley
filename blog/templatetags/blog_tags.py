@@ -3,6 +3,7 @@ from django.db.models import Count
 from django.utils.html import mark_safe
 from ..models import Post
 import markdown
+from datetime import datetime
 
 register = template.Library()
 
@@ -22,3 +23,8 @@ def get_most_commented_posts(count=4):
 @register.filter(name='markdown')
 def markdown_format(text):
     return mark_safe(markdown.markdown(text))
+
+@register.assignment_tag(name='current_year')
+def current_year():
+    now = datetime.now()
+    return datetime.strftime(now, '%Y')
