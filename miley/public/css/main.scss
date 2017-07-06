@@ -1,3 +1,6 @@
+@import "bourbon/bourbon";
+@import "neat/neat";
+
 $borderDivider: 1px solid #BDBDBD;
 
 body{
@@ -5,6 +8,12 @@ body{
   font-family: "open Sans", sans-serif;
   font-size: 14px;
   margin: 0;
+}
+
+.container {
+  @include grid-container;
+  margin: 0 auto;
+  max-width: 88em;
 }
 
 .navbar{
