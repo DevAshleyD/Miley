@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^accounts/', include('accounts.urls')),
     url(r'^paypal/', include('paypal.standard.ipn.urls')),
     url(r'^payments/', include('payments.urls', namespace='payments', app_name='payments')),
+    url(r'^coupons/', include('coupons.urls', namespace='coupons', app_name='coupons')),
     url(r'^shop/', include('shop.urls', namespace='shop', app_name='shop')),
 ]
 
