@@ -66,11 +66,12 @@ def user_list_json(request):
             'email': user.email,
             'first_name': user.first_name,
             'last_name': user.last_name,
-            'picture': user.profile.picture,
+            'picture': user.profile.picture.url,
             'type': user.profile.profile_type,
             'birth': user.profile.birth_date,
             'last_login': user.last_login,
-            'groups': user.groups
+            'is_active': user.is_active,
+            'is_superuser': user.is_superuser
         }))
     return JsonResponse({'users': data})
 
