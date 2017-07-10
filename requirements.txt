@@ -13,3 +13,5 @@ Pillow
 celery
 django-paypal
 WeasyPrint
+graphene[django]
+django_graphiql
