@@ -71,7 +71,8 @@ def user_list_json(request):
             'birth': user.profile.birth_date,
             'last_login': user.last_login,
             'is_active': user.is_active,
-            'is_superuser': user.is_superuser
+            'is_superuser': user.is_superuser,
+            'date_joined': user.date_joined
         }))
     return JsonResponse({'users': data})
 
