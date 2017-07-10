@@ -60,7 +60,7 @@ def user_list_json(request):
     # return JsonResponse({'users': serialize('json', users)})
     data = list()
     for user in users:
-        d = dict({
+        data.append(dict({
             'id': user.id,
             'username': user.username,
             'email': user.email,
@@ -71,10 +71,8 @@ def user_list_json(request):
             'birth': user.profile.birth_date,
             'last_login': user.last_login,
             'groups': user.groups
-        })
-        data.append(d)
+        }))
     return JsonResponse({'users': data})
-    # return JsonResponse({'users': serialize('json', users)})
 
 @login_required
 def user_detail(request, username):
