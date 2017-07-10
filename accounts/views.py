@@ -1,3 +1,4 @@
+from django.core.serializers import serialize
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
@@ -53,6 +54,10 @@ def user_list(request):
     return render(request, 'accounts/user/list.html',
         {'section': 'people',
         'users': users})
+
+def user_list_json(request):
+    users = User.objects.all()
+    return JsonResponse({'users': serialize('json', users)})
 
 @login_required
 def user_detail(request, username):
