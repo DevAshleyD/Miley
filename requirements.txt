@@ -9,7 +9,7 @@ django-haystack
 pysolr
 sorl-thumbnail==12.3
 redis
-pillow
+Pillow
 celery
 django-paypal
 WeasyPrint
