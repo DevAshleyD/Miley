@@ -27,7 +27,6 @@ SECRET_KEY = '=eyvhik^@a5q8ua&$^r-&yzo)2@i@6djhx%^5)d3h9zgv3l*w_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 0)
-TEMPLATE_DEBUG = os.environ.get('DEBUG', 0)
 # THUMBNAIL_DEBUG = os.environ.get('DEBUG', 0)
 THUMBNAIL_DEBUG = True
 
@@ -86,7 +85,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'shop.context_processors.cart',
             ],
-            'debug': True,
+            'debug': os.environ.get('DEBUG', False),
         },
     },
 ]
