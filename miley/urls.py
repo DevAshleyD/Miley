@@ -16,6 +16,8 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from graphene_django.views import GraphQLView
+from .schema import schema
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -26,6 +28,7 @@ urlpatterns = [
     url(r'^payments/', include('payments.urls', namespace='payments', app_name='payments')),
     url(r'^coupons/', include('coupons.urls', namespace='coupons', app_name='coupons')),
     url(r'^shop/', include('shop.urls', namespace='shop', app_name='shop')),
+    url(r'^graphql', GraphQLView.as_view(graphiql=True, schema=schema))
 ]
 
 # if settings.DEBUG:

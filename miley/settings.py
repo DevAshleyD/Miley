@@ -57,6 +57,7 @@ INSTALLED_APPS = (
     'shop',
     'payments',
     'coupons',
+    'graphene_django',
 )
 
 MIDDLEWARE_CLASSES = (
