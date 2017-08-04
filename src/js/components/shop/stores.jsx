@@ -10,7 +10,7 @@ const StoreCard = (props) => {
 }
 
 export class StoreList extends Component{
-  constructor(){
+  constructor(props){
     super()
     this.state = {
       stores: []

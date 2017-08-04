@@ -1,13 +1,17 @@
 import React, {Component} from 'react'
 
 export class ProductCard extends Component{
-  constructor(){
+  constructor(props){
     super()
     this.state = {
       name: null,
       price: null,
       picture: null
     }
+  }
+
+  shouldComponentUpdate(nextProps, nextState){
+    return (this.state.price != nextState.price)
   }
 
   render(){
@@ -32,7 +36,7 @@ export class ProductList extends Component{
 
   render(){
     const {products} = this.state
-    
+
     return(
       <div className="product-list">
         {products.map(product => {

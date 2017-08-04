@@ -3,11 +3,23 @@ import ReactDOM from 'react-dom'
 import {createStore} from 'redux'
 import {StoreList} from './components/shop/stores.jsx'
 import {ProductList} from './components/shop/products.jsx'
-import Reducer from './reducers/index.js'
+import {Reducer} from './reducers/index.js'
+
+let store = createStore(Reducer)
 
 class App extends Component{
-  constructor(){
+  constructor(props){
     super()
+    this.state = props.store
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange(){
+    this.setState(this.props)
+  }
+
+  componentDidMount(){
+    this.props.store.subscribe(this.handleChange)
   }
 
   render(){
@@ -24,5 +36,5 @@ class App extends Component{
 
 const MainView = document.getElementById('miley')
 if (!!MainView) {
-  ReactDOM.render(<App />, MainView)
+  ReactDOM.render(<App store={store} />, MainView)
 }
