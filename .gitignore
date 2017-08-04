@@ -111,3 +111,4 @@ miley/public/js/miley.js
 bourbon
 neat
 node_modules
+.vagrant
