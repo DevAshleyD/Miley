@@ -1,27 +1,30 @@
 import React, {Component} from 'react'
-// import {likeShop} from '../../actions/shop'
+import {shopActions} from '../../actions'
 import {constants} from '../../constants'
 import {StoreCard} from '../../components/shop/stores.jsx'
+import {ShopStore} from '../../stores/shops-store'
 
 export class StoreCardContainer extends Component {
   constructor(props){
     super()
     this.state = {
       store: props.store,
-      liked: false
+      liked: false,
+      user: props.user
     }
-    this.like = this.like.bind(this)
+    this._like = this._like.bind(this)
   }
 
-  like(){
-    this.setState({
-      liked: !this.state.liked
-    })
+  _like(){
+    shopActions.likeShop(this.state.store, {id: 1, name: 'User Name'})
+    // this.setState({
+    //   liked: !this.state.liked
+    // })
   }
 
   render(){
     const {store, liked} = this.state
-    return <StoreCard store={store} liked={liked} like={this.like} />
+    return <StoreCard store={store} liked={liked} like={this._like} />
   }
 }
 
@@ -29,26 +32,38 @@ export class StoreListContainer extends Component{
   constructor(props){
     super()
     this.state = {
-      stores: []
+      user: {},
+      stores: ShopStore.getShops()
     }
+    this._onChange = this._onChange.bind(this)
   }
 
-  componentWillMount(){
-    let newStores = [
-      {id: 0, name: 'Store 1'},
-      {id: 1, name: 'Store 2'},
-      {id: 2, name: 'Store 3'},
-    ]
-    this.setState({stores: newStores})
+  componentDidMount(){
+    // Subscribe only to the relevant stores
+    ShopStore.addChangeListener(this._onChange)
+  }
+
+  componentWillUnmount(){
+    ShopStore.removeChangeListener(this._onChange)
+  }
+
+  _onChange(){
+    // Pull back the data from the store
+    this.setState({
+      stores: ShopStore.getShops()
+    })
   }
 
   render(){
-    const {stores} = this.state
+    const {user, stores} = this.state
 
     return(
       <div className="store-list">
         <h2>Stores</h2>
-        {stores.map(store => <StoreCardContainer key={store.id} store={store} />)}
+        {stores.map(store => <StoreCardContainer
+          key={store.id}
+          user={user}
+          store={store} />)}
       </div>
     )
   }

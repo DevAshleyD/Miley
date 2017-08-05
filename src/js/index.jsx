@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import {createStore} from 'redux'
+import {shopStore} from './stores/shops-store'
 import {StoreListContainer} from './containers/shop/stores.jsx'
 import {ProductListContainer} from './containers/shop/products.jsx'
 import {Reducer} from './reducers/index.js'
