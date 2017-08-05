@@ -21,18 +21,18 @@ function setShopLike(shop, user){
 }
 
 // Inherit from EventEmitter
-export let ShopStore = Object.assign({}, EventEmitter.prototype, {
+export class ShopStore extends EventEmitter{
   getShops: getShops,
-  emitChange: function(){
+  emitChange: () => {
     this.emit('CHANGE_EVENT')
   },
-  addChangeListener: function(callback){
+  addChangeListener: callback => {
     this.on('CHANGE_EVENT', callback)
   },
-  removeChangeListener: function(callback){
+  removeChangeListener: callback => {
     this.removeListener('CHANGE_EVENT', callback)
   }
-})
+}
 
 dispatcher.register(action => {
   switch (action.actionType) {
