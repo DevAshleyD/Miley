@@ -27,7 +27,7 @@ export class ProductCardContainer extends Component{
 }
 
 export class ProductListContainer extends Component{
-  constructor(){
+  constructor(props){
     super()
     this.state = {
       products: []
