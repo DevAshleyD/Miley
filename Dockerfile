@@ -5,6 +5,7 @@ RUN apt-get -y update \
   && apt-get -y install --no-install-recommends postgresql-client \
   && rm -rf /var/lib/apt/lists/*
 
+RUN mkdir -p /usr/src/miley
 WORKDIR /usr/src/miley
 COPY requirements.txt ./
 RUN pip install -r requirements.txt

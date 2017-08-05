@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import {createStore} from 'redux'
-import {StoreList} from './components/shop/stores.jsx'
-import {ProductList} from './components/shop/products.jsx'
+import {StoreListContainer} from './containers/shop/stores.jsx'
+import {ProductListContainer} from './containers/shop/products.jsx'
 import {Reducer} from './reducers/index.js'
 
 let store = createStore(Reducer)
@@ -26,8 +26,8 @@ class App extends Component{
     return(
       <div id="main-content">
         <div className="container">
-          <StoreList />
-          <ProductList />
+          <StoreListContainer />
+          <ProductListContainer />
         </div>
       </div>
     )

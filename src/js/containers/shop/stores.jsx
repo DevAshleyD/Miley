@@ -9,7 +9,7 @@ const StoreCard = (props) => {
   )
 }
 
-export class StoreList extends Component{
+export class StoreListContainer extends Component{
   constructor(props){
     super()
     this.state = {
