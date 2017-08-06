@@ -1,10 +1,15 @@
 import graphene
 from graphene_django.types import DjangoObjectType
+from django.contrib.auth.models import User
 from .models import Contact, Profile
 
 class ContactType(DjangoObjectType):
     class Meta:
         model = Contact
+
+class UserType(DjangoObjectType):
+    class Meta:
+        model = User
 
 class ProfileType(DjangoObjectType):
     class Meta:
@@ -19,4 +24,4 @@ class Query(graphene.AbstractType):
         return Contact.objects.select_related('profile')
 
     def resolve_all_profiles(self, args, context, info):
-        return Profile.objects.all()
+        return Profile.objects.select_related('user')
