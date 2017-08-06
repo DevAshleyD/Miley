@@ -2,13 +2,29 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.contrib.admin.views.decorators import staff_member_required
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.template.loader import render_to_string
 from django.views.decorators.http import require_POST
 from .models import Category, Product, Cart, Order, OrderItem
 from .forms import CartAddProductForm, OrderCreateForm
 from .tasks import order_created
+from accounts.models import Profile
+import json
 import weasyprint
+
+def shop_list_json(request):
+    data = list()
+    for profile in Profile.objects.select_related('user'):
+        d = dict({
+            'id': profile.id,
+            'username': profile.user.username,
+            'name': profile.user.first_name + ' ' + profile.user.last_name,
+            'profileType': profile.profile_type,
+            'picture': profile.picture.url
+        })
+        data.append(d)
+
+    return JsonResponse({'shops': data})
 
 def product_list(request, category_slug=None):
     category = None

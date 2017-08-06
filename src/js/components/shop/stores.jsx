@@ -5,7 +5,8 @@ export const StoreCard = (props) => {
   return(
     <div className="store-card" onClick={like}>
       <div>
-        <strong>{store.name}</strong>
+        <img src={store.picture.replace('%3A', ':').replace('%2520', ' ')} alt={store.username} />
+        <strong>{store.username}</strong>
       </div>
       <div>
         <p>{(!!store.liked)?<em>&hearts; liked</em>:<span>like?</span>}</p>

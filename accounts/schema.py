@@ -24,4 +24,6 @@ class Query(graphene.AbstractType):
         return Contact.objects.select_related('profile')
 
     def resolve_all_profiles(self, args, context, info):
+        # user = get_object_or_404(User, username=username)
+        # products = Product.objects.filter(user=user)
         return Profile.objects.select_related('user')

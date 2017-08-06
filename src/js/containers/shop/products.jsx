@@ -34,6 +34,10 @@ export class ProductListContainer extends Component{
     }
   }
 
+  componentWillMount(){
+    // Fetch data here
+  }
+
   render(){
     const {products} = this.state
 

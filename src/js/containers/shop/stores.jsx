@@ -17,9 +17,6 @@ export class StoreCardContainer extends Component {
 
   _like(){
     shopActions.likeShop(this.state.store, {id: 1, name: 'User Name'})
-    // this.setState({
-    //   liked: !this.state.liked
-    // })
   }
 
   render(){
@@ -33,12 +30,14 @@ export class StoreListContainer extends Component{
     super()
     this.state = {
       user: {},
-      stores: ShopStore.getShops()
+      stores: [],
     }
     this._onChange = this._onChange.bind(this)
   }
 
   componentDidMount(){
+    // Fetch data here
+    shopActions.requestShops()
     // Subscribe only to the relevant stores
     ShopStore.addChangeListener(this._onChange)
   }
