@@ -6,7 +6,8 @@
     {% if profile.picture %}
       {% thumbnail user.profile.picture '34x34' crop='100%' as image %}
         <a href="{{user.get_absolute_url}}">
-          <img src="{{user.profile.picture}}" alt="{{user.get_full_name}}">
+          <!-- TODO: Download the resize profile images -->
+          <img src="{{user.profile.picture}}" alt="{{user.get_full_name}}" width="48">
         </a>
       {% endthumbnail %}
     {% endif %}

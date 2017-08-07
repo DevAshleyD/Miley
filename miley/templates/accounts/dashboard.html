@@ -18,6 +18,13 @@
         {% include 'activities/activity/detail.html' %}
       {% endfor %}
     </div>
+
+    <h2>Videos</h2>
+    <div class="cards">
+      {% for card in videos %}
+        {% include 'videos/card.html' %}
+      {% endfor %}
+    </div>
   </div>
 </div>
 {% endblock %}

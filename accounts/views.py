@@ -38,6 +38,7 @@ def user_logout(request):
 
 @login_required
 def dashboard(request):
+    videos = range(0,10)
     activities = Activity.objects.all().exclude(user=request.user)
     following_ids = request.user.following.values_list('id', flat=True)
     if following_ids:
@@ -46,7 +47,7 @@ def dashboard(request):
 
     activities = Activity.objects.all()
     return render(request, 'accounts/dashboard.html', {'section': 'dashboard',
-        'activities': activities})
+        'activities': activities, 'videos': videos})
 
 @login_required
 def user_list(request):
