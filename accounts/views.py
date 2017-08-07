@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods, require_POST
 from django.conf import settings
 from .forms import LoginForm
-from .models import Contact
+from .models import Contact, Profile
 from activities.models import Activity
 import json
 from activities.utils import create_activity
@@ -39,6 +39,7 @@ def user_logout(request):
 @login_required
 def dashboard(request):
     videos = range(0,10)
+    profiles = Profile.objects.exclude(user=request.user)
     activities = Activity.objects.all().exclude(user=request.user)
     following_ids = request.user.following.values_list('id', flat=True)
     if following_ids:
@@ -47,7 +48,7 @@ def dashboard(request):
 
     activities = Activity.objects.all()
     return render(request, 'accounts/dashboard.html', {'section': 'dashboard',
-        'activities': activities, 'videos': videos})
+        'activities': activities, 'videos': videos, 'profiles': profiles})
 
 @login_required
 def user_list(request):

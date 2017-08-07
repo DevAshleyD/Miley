@@ -38,13 +38,6 @@
           </p>
         {% endwith %}
 
-        <h2>Activities</h2>
-        <div class="activities">
-          {% for activity in activities %}
-            {% include 'activities/activity/detail.html' %}
-          {% endfor %}
-        </div>
-
         <h2>Videos</h2>
         <div class="cards">
           {% for card in videos %}
@@ -53,19 +46,26 @@
         </div>
       </div>
       <div class="sidebar secondary two column">
-        <h2>Ads</h2>
-        <div class="ad">
+        <div class="ad sidebar">
           banner here
         </div>
+        <div class="activities">
+          {% for activity in activities %}
+            {% include 'activities/activity/detail.html' %}
+          {% endfor %}
+        </div>
         <div class="recommended">
-          <h4>Who to follow</h4>
-          <ul>
-            <li>Username picture 1</li>
-            <li>Username picture 2</li>
-            <li>Username picture 3</li>
-            <li>Username picture 4</li>
-            <li>Username picture 5</li>
-            <li>Username picture 6</li>
+          <h4 class="title">Who to follow</h4>
+          <ul class="profiles list">
+            {% for profile in profiles %}
+            <li class="profile">
+              <a href="{{profile.get_absolute_url}}">
+                <span class="avatar">
+                  <img src="{{profile.picture}}" alt="{{profile.user}}" />
+                </span>
+              </a>
+            </li>
+            {% endfor %}
           </ul>
         </div>
       </div>
