@@ -60,12 +60,18 @@
         </div>
       </div>
     </header>
+    {% block banner %}
     <div class="profile header">&nbsp;</div>
+    {% endblock%}
     {% endblock %}
     {% block content %}{% endblock content %}
     <div id="footer" class="footer">
       <div class="container">
-        <span class="copyright">&copy; copyright {% current_year %} Miley. All rights reserved.</span>
+        <span class="copyright">&copy; {% current_year %} Miley.</span>
+        <a href="">Terms</a>
+        <a href="">Privacy</a>
+        <a href="">Security</a>
+        <a href="">Help</a>
       </div>
     </div>
     <!-- TODO: Remove this after the router is ready -->

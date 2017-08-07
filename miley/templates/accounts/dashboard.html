@@ -1,29 +1,74 @@
 {% extends 'base.html' %}
 
+{% block banner %}{% endblock %}
 {% block content %}
 <div id="main-content">
   <div class="container">
-    <h1>Dashboard</h1>
+    <div class="columns">
+      <div class="sidebar one column">
+        <h2>Trending Now</h2>
+        <ul>
+          <li>
+            <a href="">#Trend1</a>
+          </li>
+          <li>
+            <a href="">#Trend2</a>
+          </li>
+          <li>
+            <a href="">#Trend3</a>
+          </li>
+          <li>
+            <a href="">#Trend4</a>
+          </li>
+          <li>
+            <a href="">#Trend5</a>
+          </li>
+          <li>
+            <a href="">#Trend6</a>
+          </li>
+        </ul>
+      </div>
+      <div class="feed three column">
+        <h1>Dashboard</h1>
 
-    {% with total_images_created=request.user.images_created.count %}
-      <p>
-        You have bookmarked
-        <a href="{% url 'images:list' %}">{{total_images_created}} image{{total_images_created|pluralize}}</a>
-      </p>
-    {% endwith %}
+        {% with total_images_created=request.user.images_created.count %}
+          <p>
+            You have bookmarked
+            <a href="{% url 'images:list' %}">{{total_images_created}} image{{total_images_created|pluralize}}</a>
+          </p>
+        {% endwith %}
 
-    <h2>Activities</h2>
-    <div class="activities">
-      {% for activity in activities %}
-        {% include 'activities/activity/detail.html' %}
-      {% endfor %}
-    </div>
+        <h2>Activities</h2>
+        <div class="activities">
+          {% for activity in activities %}
+            {% include 'activities/activity/detail.html' %}
+          {% endfor %}
+        </div>
 
-    <h2>Videos</h2>
-    <div class="cards">
-      {% for card in videos %}
-        {% include 'videos/card.html' %}
-      {% endfor %}
+        <h2>Videos</h2>
+        <div class="cards">
+          {% for card in videos %}
+            {% include 'videos/card.html' %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="sidebar secondary two column">
+        <h2>Ads</h2>
+        <div class="ad">
+          banner here
+        </div>
+        <div class="recommended">
+          <h4>Who to follow</h4>
+          <ul>
+            <li>Username picture 1</li>
+            <li>Username picture 2</li>
+            <li>Username picture 3</li>
+            <li>Username picture 4</li>
+            <li>Username picture 5</li>
+            <li>Username picture 6</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>

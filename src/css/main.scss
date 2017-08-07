@@ -1,6 +1,10 @@
 @import "bourbon/bourbon";
 @import "neat/neat";
 
+$neat-grid: (
+  columns: 6,
+  gutter: 10px,
+);
 $borderDivider: 1px solid #BDBDBD;
 
 body{
@@ -25,6 +29,19 @@ a{
   @include grid-container;
   margin: 0 auto;
   max-width: 88em;
+}
+
+.columns{
+  @include clearfix;
+
+  .column{
+    &.one { @include grid-column(1); }
+    &.two { @include grid-column(2); }
+    &.three { @include grid-column(3); }
+    &.four { @include grid-column(4); }
+    &.five { @include grid-column(5); }
+    &.six { @include grid-column(6); }
+  }
 }
 
 .navbar{
