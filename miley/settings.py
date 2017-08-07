@@ -17,6 +17,7 @@ import os
 from django.core.urlresolvers import reverse_lazy
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
 # Quick-start development settings - unsuitable for production
@@ -131,9 +132,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'miley', 'public', 'media')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'miley', 'public'),
     os.path.join(BASE_DIR, 'public'),
+    os.path.join(BASE_DIR, 'media'),
 )
-# MEDIA_URL = '/media/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media/'),
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
 
 LOGIN_REDIRECT_URL = reverse_lazy('dashboard')
 LOGIN_URL = reverse_lazy('login')

@@ -4,7 +4,7 @@
 <div class="activity">
   <div class="picture">
     {% if profile.picture %}
-      {% thumbnail user.profile.picture '40x40' crop='100%' as image %}
+      {% thumbnail user.profile.picture '34x34' crop='100%' as image %}
         <a href="{{user.get_absolute_url}}">
           <img src="{{user.profile.picture}}" alt="{{user.get_full_name}}">
         </a>
@@ -16,7 +16,7 @@
     {% if activity.target %}
       {% with target=activity.target %}
         {% if target.image %}
-          {% thumbnail target.image '80x80' crop='100%' as image %}
+          {% thumbnail target.image '48x48' crop='100%' as image %}
           <a href="{{target.get_absolute_url}}">
             <img src="{{image.url}}" alt="{{target.image}}">
           </a>
@@ -24,10 +24,12 @@
         {% endif %}
 
         <p>
-          <span>{{activity.created|timesince}} ago</span>
           <a href="{{activity.get_user_url}}">{{user}}</a>
            <span>{{activity.verb}}</span>
            <a href="{{activity.get_target_url}}">{{activity.target}}</a>
+           <span class="meta">
+             <em class="time">{{activity.created|timesince}} ago</em>
+           </span>
         </p>
 
       {% endwith %}
