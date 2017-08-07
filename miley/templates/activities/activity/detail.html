@@ -25,9 +25,9 @@
 
         <p>
           <span>{{activity.created|timesince}} ago</span>
-          <a href="{{user.get_absolute_url}}">{{user}}</a>
+          <a href="{{activity.get_user_url}}">{{user}}</a>
            <span>{{activity.verb}}</span>
-           <a href="{{target.get_absolute_url}}">{{activity.target}}</a>
+           <a href="{{activity.get_target_url}}">{{activity.target}}</a>
         </p>
 
       {% endwith %}

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 
@@ -15,3 +16,9 @@ class Activity(models.Model):
 
     class Meta:
         ordering = ('-created',)
+
+    def get_user_url(self):
+        return reverse('user_detail', args=[self.user.username])
+
+    def get_target_url(self):
+        return reverse('user_detail', args=[self.target.username])
