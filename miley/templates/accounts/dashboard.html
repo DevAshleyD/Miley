@@ -6,39 +6,41 @@
   <div class="container">
     <div class="columns">
       <div class="sidebar one column">
-        <h2>Trending Now</h2>
-        <ul>
-          <li>
-            <a href="">#Trend1</a>
-          </li>
-          <li>
-            <a href="">#Trend2</a>
-          </li>
-          <li>
-            <a href="">#Trend3</a>
-          </li>
-          <li>
-            <a href="">#Trend4</a>
-          </li>
-          <li>
-            <a href="">#Trend5</a>
-          </li>
-          <li>
-            <a href="">#Trend6</a>
-          </li>
-        </ul>
+        <div class="notifications widget">
+          <ul>
+            <li>
+              {% with total_images_created=request.user.images_created.count %}
+                <span>You have bookmarked</span>
+                <a href="{% url 'images:list' %}">{{total_images_created}} image{{total_images_created|pluralize}}</a>
+              {% endwith %}
+            </li>
+          </ul>
+        </div>
+        <div class="trends widget">
+          <h2 class="title">Trending Now</h2>
+          <ul>
+            <li>
+              <a href="">#Trend1</a>
+            </li>
+            <li>
+              <a href="">#Trend2</a>
+            </li>
+            <li>
+              <a href="">#Trend3</a>
+            </li>
+            <li>
+              <a href="">#Trend4</a>
+            </li>
+            <li>
+              <a href="">#Trend5</a>
+            </li>
+            <li>
+              <a href="">#Trend6</a>
+            </li>
+          </ul>
+        </div>
       </div>
       <div class="feed three column">
-        <h1>Dashboard</h1>
-
-        {% with total_images_created=request.user.images_created.count %}
-          <p>
-            You have bookmarked
-            <a href="{% url 'images:list' %}">{{total_images_created}} image{{total_images_created|pluralize}}</a>
-          </p>
-        {% endwith %}
-
-        <h2>Videos</h2>
         <div class="cards">
           {% for card in videos %}
             {% include 'videos/card.html' %}

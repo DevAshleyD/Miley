@@ -1,32 +1,29 @@
 {% load thumbnail %}
 
-<div class="{{card}}" style="background:#fff;border:1px solid #efefef;width:420px; margin-bottom:20px;">
-  <div class="header" style="height:60px;">
-    <div class="avatar" style="float:left;height:40px;margin-right:10px;">
+<div class="card">
+  <div class="header">
+    <div class="avatar">
       avatar
     </div>
     <div class="user details">
-      <div class="name">
-        <strong>username</strong>
-      </div>
-      <div class="meta">
-        <span>location</span>
-      </div>
+      <span class="name">username</span>
+      <span class="meta">location</span>
     </div>
   </div>
-  <div class="picture" style="background:#efefef;height:240px;">
-    <a href="" style="display:block;height:100%;text-decoration:none;width:100%">
-      <em style="text-align:center;padding-top:25%;display:block;color:#ccc">preview will be here</em>
-    </a>
+  <div class="picture">
+    <a href="">&nbsp;</a>
   </div>
   <div class="description">
-    <h3 class="title">Title for this video *not clickbait*</h3>
+    <h3 class="title">
+      <a href="">Title for this video *not clickbait*</a>
+    </h3>
     <p>price: 99.99&dollar;</p>
     <div class="meta">
       <span>0 likes</span>
       <span>0 views</span>
-      <span>Action</span>
-      <br>&nbsp;
+      <span class="actions">
+        <span>Action</span>
+      </span>
     </div>
   </div>
 </div>
