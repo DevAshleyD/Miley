@@ -8,9 +8,6 @@ let _shops = [
   {id: 1, name: 'Store 2', liked: false, created: 1201953712278},
   {id: 2, name: 'Store 3', liked: false, created: 1401953702978},
 ]
-function getShops(){
-  return _shops
-}
 
 function requestShops(){
   let token = document.querySelector('meta[name=csrf_token]').content
@@ -49,7 +46,9 @@ function setShopLike(shop, user){
 // Inherit from EventEmitter
 export const ShopStore = Object.assign({}, EventEmitter.prototype, {
   requestShops: requestShops,
-  getShops: getShops,
+  getShops: function(){
+    return _shops
+  },
   emitChange: function(){
     this.emit('CHANGE_EVENT')
   },
