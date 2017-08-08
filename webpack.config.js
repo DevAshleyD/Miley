@@ -1,7 +1,12 @@
-module.exports = {
-  entry: './src/js/index.jsx',
+const path = require('path')
+
+const APP_DIR = path.resolve(__dirname + '/src/js')
+const BUILD_DIR = path.resolve(__dirname + '/miley/public/js')
+
+const config = {
+  entry: APP_DIR + '/index.jsx',
   output: {
-    path: __dirname + '/miley/public/js',
+    path: BUILD_DIR,
     filename: 'miley.js',
     publicPath: '/public/js/'
   },
@@ -20,3 +25,5 @@ module.exports = {
     ]
   }
 }
+
+module.exports = config
