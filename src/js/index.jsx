@@ -1,12 +1,9 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
-import {createStore} from 'redux'
 import {shopStore} from './stores/shops-store'
 import {StoreListContainer} from './containers/shop/stores.jsx'
 import {ProductListContainer} from './containers/shop/products.jsx'
-import {Reducer} from './reducers/index.js'
-
-let store = createStore(Reducer)
+import Store from './stores'
 
 class App extends Component{
   constructor(props){
@@ -37,5 +34,5 @@ class App extends Component{
 
 const MainView = document.getElementById('miley')
 if (!!MainView) {
-  ReactDOM.render(<App store={store} />, MainView)
+  ReactDOM.render(<App store={Store} />, MainView)
 }

@@ -31,7 +31,9 @@ DEBUG = os.environ.get('DEBUG', 0)
 # THUMBNAIL_DEBUG = os.environ.get('DEBUG', 0)
 THUMBNAIL_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    # 'miley.dev'
+]
 
 
 # Application definition
@@ -58,6 +60,7 @@ INSTALLED_APPS = (
     'shop',
     'payments',
     'coupons',
+    'videos',
     'graphene_django',
 )
 

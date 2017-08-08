@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+{% block banner %}{% endblock %}
+{% block content %}
+<div id="main-content">
+  <div class="container">
+    <div class="watch">
+      <div class="player">
+        <strong>video player here</strong>
+      </div>
+      <div class="details box">
+        <h1 class="title">{{video.title}}</h1>
+        <div class="description">
+          {{video.description}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

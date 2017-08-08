@@ -9,6 +9,7 @@ from django.conf import settings
 from .forms import LoginForm
 from .models import Contact, Profile
 from activities.models import Activity
+from videos.models import Video
 import json
 from activities.utils import create_activity
 from shop.models import Product
@@ -38,7 +39,7 @@ def user_logout(request):
 
 @login_required
 def dashboard(request):
-    videos = range(0,10)
+    videos = Video.objects.all()
     profiles = Profile.objects.exclude(user=request.user)
     activities = Activity.objects.all().exclude(user=request.user)
     following_ids = request.user.following.values_list('id', flat=True)

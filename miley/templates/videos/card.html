@@ -2,27 +2,37 @@
 
 <div class="card">
   <div class="header">
-    <div class="avatar">
-      avatar
-    </div>
+    <a href="{{card.author.profile.get_absolute_url}}" class="avatar">
+      <img src="{{card.author.profile.picture}}" alt="{{card.author}}">
+    </a>
     <div class="user details">
-      <span class="name">username</span>
+      <span class="name">
+        <a href="{{card.author.profile.get_absolute_url}}">{{card.author}}</a>
+      </span>
       <span class="meta">location</span>
     </div>
   </div>
   <div class="picture">
-    <a href="">&nbsp;</a>
+    <a href="{{card.get_absolute_url}}">
+      &nbsp;
+    </a>
   </div>
   <div class="description">
     <h3 class="title">
-      <a href="">Title for this video *not clickbait*</a>
+      <a href="{{card.get_absolute_url}}">{{card.title}}</a>
     </h3>
     <p>price: 99.99&dollar;</p>
     <div class="meta">
-      <span>0 likes</span>
-      <span>0 views</span>
+      <span>
+        <a href="{{card.get_absolute_url}}">0 likes</a>
+      </span>
+      <span>
+        <a href="{{card.get_absolute_url}}">0 views</a>
+      </span>
       <span class="actions">
-        <span>Action</span>
+        <span>
+          <a href="{{card.get_absolute_url}}">Action</a>
+        </span>
       </span>
     </div>
   </div>

@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^payments/', include('payments.urls', namespace='payments', app_name='payments')),
     url(r'^coupons/', include('coupons.urls', namespace='coupons', app_name='coupons')),
     url(r'^shop/', include('shop.urls', namespace='shop', app_name='shop')),
+    url(r'^videos/', include('videos.urls', namespace='videos', app_name='videos')),
     url(r'^graphql', GraphQLView.as_view(graphiql=True, schema=schema))
 ]
 
