@@ -3,10 +3,22 @@ import React from 'react'
 export const StoreCard = (props) => {
   const {store, like} = props
   return(
-    <div className="store-card" onClick={like}>
-      <div>
-        <img src={store.picture.replace('%3A', ':').replace('%2520', ' ')} alt={store.username} />
-        <strong>{store.username}</strong>
+    <div className="card" onClick={like}>
+      <div className="header">
+        <a href={store.picture} className="avatar">
+          <img src={store.picture} alt={store.username} />
+        </a>
+        <div className="user details">
+          <span className="name">
+            <a href="">{store.username}</a>
+          </span>
+          <span className="meta">location</span>
+        </div>
+      </div>
+      <div className="picture">
+        <a href="">
+          &nbsp;
+        </a>
       </div>
       <div>
         <p>{(!!store.liked)?<em>&hearts; liked</em>:<span>like?</span>}</p>

@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {ProductCard} from '../../components/shop/products.jsx'
+import {ShopStore} from '../../stores/shops-store'
 
 export class ProductCardContainer extends Component{
   constructor(props){
@@ -32,10 +33,27 @@ export class ProductListContainer extends Component{
     this.state = {
       products: []
     }
+    this._onChange = this._onChange.bind(this)
   }
 
   componentWillMount(){
     // Fetch data here
+  }
+
+  componentDidMount(){
+    // Subscribe only to the relevant stores
+    ShopStore.addChangeListener(this._onChange)
+  }
+
+  componentWillUnmount(){
+    ShopStore.removeChangeListener(this._onChange)
+  }
+
+  _onChange(){
+    // Pull back the data from the store
+    // this.setState({
+    //   products: []
+    // })
   }
 
   render(){

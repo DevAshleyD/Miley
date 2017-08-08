@@ -9,16 +9,16 @@ class App extends Component{
   constructor(props){
     super()
     this.state = props.store
-    this.handleChange = this.handleChange.bind(this)
+    // this.handleChange = this.handleChange.bind(this)
   }
 
-  handleChange(){
-    this.setState(this.props)
-  }
+  // handleChange(){
+  //   this.setState(this.props)
+  // }
 
-  componentDidMount(){
-    this.props.store.subscribe(this.handleChange)
-  }
+  // componentDidMount(){
+  //   this.props.store.subscribe(this.handleChange)
+  // }
 
   render(){
     return(
