@@ -38,7 +38,7 @@ def user_logout(request):
     return redirect('{}?next={}'.format(settings.LOGIN_URL, request.path))
 
 @login_required
-def dashboard(request):
+def home_feed(request):
     videos = Video.objects.all()
     profiles = Profile.objects.exclude(user=request.user)
     activities = Activity.objects.all().exclude(user=request.user)
@@ -48,7 +48,7 @@ def dashboard(request):
     activities = activities[:10]
 
     activities = Activity.objects.all()
-    return render(request, 'accounts/dashboard.html', {'section': 'dashboard',
+    return render(request, 'accounts/home_feed.html', {'section': 'dashboard',
         'activities': activities, 'videos': videos, 'profiles': profiles})
 
 @login_required
