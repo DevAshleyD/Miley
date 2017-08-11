@@ -1,4 +1,5 @@
 from django.test import TestCase
+from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 from blog.models import Post
 
@@ -20,3 +21,7 @@ class BlogPostTestCase(TestCase):
         posts = Post.objects.all()
 
         self.assertEqual(posts.count(), 10)
+
+    def test_slug_should_be_created_from_title(self):
+        for post in Post.objects.all():
+            self.assertEqual(slugify(post.title), post.slug)
