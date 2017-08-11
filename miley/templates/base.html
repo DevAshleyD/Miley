@@ -19,7 +19,7 @@
           {% if request.user.is_authenticated %}
             <ul>
               <li>
-                <a href="{% url 'dashboard' %}">Dashboard</a>
+                <a href="{% url 'home_feed' %}">Dashboard</a>
               </li>
               <li>
                 <a href="{% url 'blog:post_list' %}">Posts</a>
@@ -63,9 +63,7 @@
         </div>
       </div>
     </header>
-    {% block banner %}
-    <div class="profile header">&nbsp;</div>
-    {% endblock%}
+    
     {% endblock %}
     {% block content %}{% endblock content %}
     <div id="footer" class="footer">
