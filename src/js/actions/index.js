@@ -1,36 +1,36 @@
-import constants from '../constants'
-import dispatcher from '../dispatcher'
+import {actionTypes} from '../constants'
 
-export const getProfiles = () => {{
-  type: constants.GET_PROFILES
-}}
+/**
+  # Actions
 
-export const receiveProducts = products => ({
-  type: constants.RECEIVE_PRODUCTS,
-  products: products
-})
+  An action must:
+    * Be a plain JAvaScript object.
+    * Have a type property.
 
-export const receiveShops = shops => ({
-  type: constants.RECEIVE_SHOPS,
-  shops: shops
-})
+  An action may:
+    * Have an error property, that represents an error.
+    * Have a payload property.
+    * Have a meta property.
+
+  An action must not include properties other than type, paylod, error and meta.
+*/
 
 export const shopActions = {
-  requestShops: () => {
-    dispatcher.dispatch({
-      actionType: constants.REQUEST_SHOPS
-    })
-  },
-  receiveShops: () => {
-    dispatcher.dispatch({
-      actionType: constants.RECEIVE_SHOPS
-    })
-  },
-  likeShop: (shop, user) => {
-    dispatcher.dispatch({
-      actionType: constants.LIKE_SHOP,
-      user: user,
-      shop: shop
-    })
-  }
+  requestShops: () => ({
+    type: actionTypes.REQUEST_SHOPS,
+    payload: null
+  }),
+  receiveShops: ({shops}) => ({
+    type: actionTypes.RECEIVE_SHOPS,
+    payload: {
+      shops: shops
+    }
+  }),
+  likeShop: ({shop, user}) => ({
+    type: actionTypes.LIKE_SHOP,
+    payload: {
+      shop: shop,
+      user: user
+    }
+  })
 }
