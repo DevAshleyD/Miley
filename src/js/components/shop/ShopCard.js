@@ -16,9 +16,25 @@ export const ShopCard = ({shop, like}) => (
     <div className="picture">
       <a href="">&nbsp;</a>
     </div>
-    <div>
-      <h3>Shop Name: {shop.name}</h3>
-      <p>{(!!shop.liked)?<em>&hearts; liked</em>:<span>like?</span>}</p>
+    <div className="description">
+      <h3 className="title">Shop Name: {shop.name}</h3>
+      <p>price: 99.99&dollar;</p>
+
+      <div className="meta">
+        <span>
+          <a href={shop.url}>
+            {(!!shop.liked)?<em>&hearts; liked</em>:<span>like?</span>}&nbsp;
+          </a>
+        </span>
+        <span>
+          <a href={shop.url}>0 views</a>&nbsp;
+        </span>
+        <span className="actions">
+          <span>
+            <a href={shop.url}>Action</a>&nbsp;
+          </span>
+        </span>
+      </div>
     </div>
   </div>
 )

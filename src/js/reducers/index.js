@@ -4,7 +4,12 @@ import {EventEmitter} from 'events'
 
 const profileInitialState = {
   currentUser: {id: 99, name: 'Display Name'},
-  users: []
+  users: [],
+  activities: [
+    {id: 0, username: 'User 1', title: 'is now following', picture: '', created: ''},
+    {id: 1, username: 'User 2', title: 'is now following', picture: '', created: ''},
+    {id: 2, username: 'User 3', title: 'is now following', picture: '', created: ''},
+  ]
 }
 const ProfileReducer = (state=profileInitialState, action) => {
   switch (action.type) {
@@ -16,6 +21,14 @@ const ProfileReducer = (state=profileInitialState, action) => {
       return Object.assign({}, state, {users: state.users.concat(newUser)})
     case actionTypes.CURRENT_USER:
       return state.currentUser
+
+    case actionTypes.GET_PROFILES:
+
+    case actionTypes.GET_PROFILES_ACTIVITIES:
+
+    case actionTypes.RECEIVE_PROFILES:
+      return Object.assign({}, state, {users: action.payload.users})
+
     default:
       return state
   }
@@ -48,8 +61,39 @@ const ShopReducer = (state=shopInitialState, action) => {
     return state
 }
 
+const TrendsInitialState = {
+  trends: [
+    {id: 1, name: 'Trend 1', url: ''},
+    {id: 2, name: 'Trend 2', url: ''},
+    {id: 3, name: 'Trend 3', url: ''},
+    {id: 4, name: 'Trend 4', url: ''},
+    {id: 5, name: 'Trend 5', url: ''},
+    {id: 6, name: 'Trend 6', url: ''},
+  ]
+}
+const TrendsReducer = (state=TrendsInitialState, action) => {
+  switch (action.type) {
+    default:
+      return state
+  }
+}
+
+const NotificationsInitialState = {
+  notifications: [
+    {id: 0, message: 'You have bookmarked', ctx_count: '1 image', url: ''},
+  ]
+}
+const NotificationsReducer = (state=NotificationsInitialState, action) => {
+  switch (action.type) {
+    default:
+      return state
+  }
+}
+
 // export const Reducer = ShopReducer
 export const Reducer = combineReducers({
   ProfileReducer,
-  ShopReducer
+  ShopReducer,
+  TrendsReducer,
+  NotificationsReducer
 })

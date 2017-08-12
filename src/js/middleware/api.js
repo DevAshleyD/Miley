@@ -1,5 +1,5 @@
 import Store from '../stores'
-import {shopActions} from '../actions'
+import {shopActions, profileActions} from '../actions'
 
 class API {
   constructor(opt={}){
@@ -30,7 +30,11 @@ class API {
       body: data
     })
     .then(data => data.json())
-    .then(data => dispatch(shopActions.receiveShops(data)))
+    .then(data => {
+      // TODO: Fix this with GraphSQL
+      dispatch(shopActions.receiveShops(data))
+      dispatch(profileActions.receiveProfiles(data))
+    })
     .catch(err => console.error('Error:', err))
   }
 }
