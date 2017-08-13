@@ -11,4 +11,4 @@ docker stop web || true
 docker rm web || true
 docker rmi itstommy/miley:current || true
 docker tag itstommy/miley:latest itstommy/miley:current
-docker run -d --net app --restart always --name web -p 3000:3000 itstommy/miley
+docker run -d --net app --restart always --name web -p 8080:8000 itstommy/miley

@@ -1,5 +1,9 @@
 language: python
 python:
   - "3.6"
+before_install:
+  - docker pull itstommy/miley
+  - docker run -d -p 8000:80 itstommy/miley
+  - docker run itstommy/miley python manage.py test
 install: "pip install -r requirements.txt"
 script: "python manage.py test"
