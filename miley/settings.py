@@ -104,10 +104,10 @@ WSGI_APPLICATION = 'miley.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': 'localhost',
+        'HOST': os.environ.get('POSTGRESQL_HOST', 'localhost'),
         'NAME': 'miley',
-        'USER': '',
-        'PASSWORD': ''
+        'USER': 'miley',
+        'PASSWORD': 'miley'
     }
 }
 
