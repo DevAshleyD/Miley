@@ -1,0 +1,50 @@
+version: "2"
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: bin/server
+    # depends_on:
+    #   - postgres
+    volumes:
+      - .:/usr/src/miley
+    environment:
+      - DEBUG=1
+      - PORT=8000
+      - DATABASE_URL="postgresql://miley:miley@postgres/miley"
+      - POSTGRESQL_HOST=postgres
+      - POSTGRESQL_NAME=miley
+      - POSTGRESQL_USER=miley
+      - POSTGRESQL_PASSWORD=miley
+      - SMTP_HOST=$SMTP_HOST
+      - SMTP_USER=$SMTP_USER
+      - SMTP_PASSWORD=$SMTP_PASSWORD
+      - SMTP_PORT=$SMTP_PORT
+      - REDIS_HOST=$REDIS_HOST
+      - REDIS_PORT=$REDIS_PORT
+      - REDIS_DB=$REDIS_DB
+      - PAYPAL_RECEIVER_EMAIL=$PAYPAL_RECEIVER_EMAIL
+      - PAYPAL_TEST=$PAYPAL_TEST
+    ports:
+      - 8080:8000
+
+  # migrations:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.dev
+  #   depends_on:
+  #     - postgres
+  #   command: python manage.py migrate
+
+  # postgres:
+  #   image: postgres:9.6.4
+  #   environment:
+  #     - POSTGRES_DB=miley
+  #     - POSTGRES_USER=miley
+  #     - POSTGRES_PASSWORD=miley
+  #   ports:
+  #     - 5432:5432
+
+  # redis:
+  #   image: redis:3.2.10
