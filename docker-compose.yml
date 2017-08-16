@@ -5,8 +5,8 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     command: bin/server
-    # depends_on:
-    #   - postgres
+      depends_on:
+       - postgres
     volumes:
       - .:/usr/src/miley
     environment:
@@ -37,14 +37,14 @@ services:
   #     - postgres
   #   command: python manage.py migrate
 
-  # postgres:
-  #   image: postgres:9.6.4
-  #   environment:
-  #     - POSTGRES_DB=miley
-  #     - POSTGRES_USER=miley
-  #     - POSTGRES_PASSWORD=miley
-  #   ports:
-  #     - 5432:5432
+  postgres:
+    image: postgres:9.6.4
+    environment:
+      - POSTGRES_DB=miley
+      - POSTGRES_USER=miley
+      - POSTGRES_PASSWORD=miley
+    ports:
+      - 5432:5432
 
   # redis:
   #   image: redis:3.2.10
