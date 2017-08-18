@@ -1,4 +1,5 @@
 import {actionTypes} from '../constants'
+import {api} from '../../middleware/api'
 
 /**
   # Actions
