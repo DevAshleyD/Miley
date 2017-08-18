@@ -32,7 +32,8 @@ DEBUG = os.environ.get('DEBUG', 0)
 THUMBNAIL_DEBUG = True
 
 ALLOWED_HOSTS = [
-    # 'miley.dev'
+    'localhost'
+    'miley.dev'
 ]
 
 
@@ -103,8 +104,11 @@ WSGI_APPLICATION = 'miley.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('POSTGRESQL_NAME', 'miley')
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'HOST': 'db_postgres',
+        'POST': 5432,
     }
 }
 

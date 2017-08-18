@@ -6,17 +6,14 @@ services:
       dockerfile: Dockerfile.dev
     command: bin/server
     depends_on:
-      - postgres
+      - db_postgres
     volumes:
       - .:/usr/src/miley
     environment:
       - DEBUG=1
       - PORT=8000
       - DATABASE_URL="postgresql://miley:miley@postgres/miley"
-      - POSTGRESQL_HOST=postgres
-      - POSTGRESQL_NAME=miley
-      - POSTGRESQL_USER=miley
-      - POSTGRESQL_PASSWORD=miley
+      - POSTGRES_DB=miley
       - SMTP_HOST=$SMTP_HOST
       - SMTP_USER=$SMTP_USER
       - SMTP_PASSWORD=$SMTP_PASSWORD
@@ -27,7 +24,7 @@ services:
       - PAYPAL_RECEIVER_EMAIL=$PAYPAL_RECEIVER_EMAIL
       - PAYPAL_TEST=$PAYPAL_TEST
     ports:
-      - 8080:8000
+      - 80:8000
 
   # migrations:
   #   build:
@@ -37,7 +34,7 @@ services:
   #     - postgres
   #   command: python manage.py migrate
 
-  postgres:
+  db_postgres:
     image: postgres:9.6.4
     environment:
       - POSTGRES_DB=miley
@@ -46,5 +43,5 @@ services:
     ports:
       - 5432:5432
 
-  # redis:
-  #   image: redis:3.2.10
+  redis:
+    image: redis:3.2.10
