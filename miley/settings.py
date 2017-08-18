@@ -32,10 +32,10 @@ DEBUG = os.environ.get('DEBUG', 0)
 THUMBNAIL_DEBUG = True
 
 ALLOWED_HOSTS = [
-    'localhost'
+    'localhost',
     'miley.dev'
 ]
-
+SITE_ID=1
 
 # Application definition
 
@@ -91,7 +91,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'shop.context_processors.cart',
             ],
-            'debug': os.environ.get('DEBUG', False),
+            'debug': os.environ.get('DEBUG', 0),
         },
     },
 ]
@@ -163,9 +163,9 @@ HAYSTACK_CONNECTIONS = {
     }
 }
 
-REDIS_HOST=os.environ.get('REDIS_HOST', 'localhost')
+REDIS_HOST=os.environ.get('REDIS_HOST', 'redis')
 REDIS_PORT=os.environ.get('REDIS_PORT', 6379)
-REDIS_DATABASE=os.environ.get('REDIS_DATABASE', 0)
+REDIS_DATABASE=os.environ.get('REDIS_DATABASE', 'redis')
 
 CART_SESSION_ID = 'cart_sid'
 

@@ -1,8 +1,10 @@
 import Store from '../stores'
 import {shopActions, profileActions} from '../actions'
+import {BASE_URL} from '../constants'
 
 class API {
   constructor(opt={}){
+    this.baseURL = '//' + window.location.hostname
     this.config = {
       token: opt.token
     }
@@ -23,7 +25,7 @@ class API {
         'allProfiles': {}
       }
     })
-    fetch('http://localhost:8000/shop/stores.json', {
+    fetch(this.baseURL + '/shop/stores.json', {
       method: 'POST',
       headers: headers,
       credentials: 'include',
