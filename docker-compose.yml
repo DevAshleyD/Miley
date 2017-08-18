@@ -5,8 +5,8 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     command: bin/server
-      depends_on:
-       - postgres
+    depends_on:
+      - postgres
     volumes:
       - .:/usr/src/miley
     environment:
