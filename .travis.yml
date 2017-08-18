@@ -2,14 +2,11 @@ dist: trusty
 language: python
 python:
   - "3.6"
-env:
-  - DJANGO=1.11.2
+sudo: required
 services:
-  - postgresql
+  - docker
 before_install:
-  - export DJANGO_SETTINGS_MODULE=miley.settings
-  - export PIP_USE_MIRRORS=true
-install:
-  - pip install -r requirements.txt
+  - docker build -t itstommy/miley .
+  - docker run -d -p 127.0.0.1:80:4567 itstommy/miley /bin/sh -c "cd /usr/src/miley"
 script:
   - python manage.py test
