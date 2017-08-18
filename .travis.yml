@@ -1,6 +1,7 @@
 dist: trusty
 env:
   - DOCKER_COMPOSE_VERSION=1.4.2
+  - CODECLIMATE_REPO_TOKEN=8e7824579bce2de95ccb9e047fda63a8fc0b93a8cbad68f0edcf3358af77bbd4
 language: python
 python:
   - "3.6"
