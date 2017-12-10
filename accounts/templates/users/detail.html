@@ -40,7 +40,12 @@
     </div>
 
     <div class="products">
-      <h2>My Store</h2>
+
+      {% if request.user.id == user.id %}
+        <h2>My Store</h2>
+      {% else %}
+        <h2>{{user.username}}</h2>
+      {% endif %}
       {% for product in products %}
         {% include 'shop/product/_item.html' %}
       {% endfor %}
