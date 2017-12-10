@@ -6,7 +6,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods, require_POST
 from django.conf import settings
-from .forms import LoginForm
+import logging
+from .forms import SignupForm, LoginForm
 from .models import Contact, Profile
 from activities.models import Activity
 from videos.models import Video
@@ -15,10 +16,24 @@ from activities.utils import create_activity
 from shop.models import Product
 
 def user_signup(request):
+    logger = logging.getLogger(__name__)
     if request.method == 'POST':
-        form = LoginForm(request.POST)
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            try:
+                user = User.objects.create_user(cd['username'], cd['email'], cd['password'])
+                profile = Profile(profile_type=0, user=user)
+                if profile is not None:
+                    logger.info('New user profile was signed up successfully: {}, {}'.format(profile.id, user.email))
+                    return redirect('login')
+            except Exception as e:
+                logger.error('Error signing up: {}'.format(e))
+            return HttpResponse('Error signing up')
+        else:
+            logger.error('Invalid form')
     else:
-        form = LoginForm()
+        form = SignupForm()
 
     return render(request, 'accounts/signup.html', {'form': form})
 

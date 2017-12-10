@@ -56,14 +56,16 @@
                 your cart is empty
                 {% endif %}
               {% endwith %}
+              <a href="{% url 'logout' %}">logout</a>
             {% else %}
+              <a href="{% url 'signup' %}">signup</a>
               <a href="{% url 'login' %}">login</a>
             {% endif %}
           </span>
         </div>
       </div>
     </header>
-    
+
     {% endblock %}
     {% block content %}{% endblock content %}
     <div id="footer" class="footer">
