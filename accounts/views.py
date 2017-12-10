@@ -23,7 +23,7 @@ def user_signup(request):
             cd = form.cleaned_data
             try:
                 user = User.objects.create_user(cd['username'], cd['email'], cd['password'])
-                profile = Profile(profile_type=0, user=user)
+                profile = Profile(profile_type=cd['profile_type'], user=user)
                 if profile is not None:
                     logger.info('New user profile was signed up successfully: {}, {}'.format(profile.id, user.email))
                     return redirect('login')
@@ -133,3 +133,7 @@ def user_follow(request):
             return JsonResponse({'status': 'not found'})
 
     return JsonResponse({'status': 'error'})
+
+@login_required
+def account_settings(request):
+    return render(request, 'accounts/settings.html')

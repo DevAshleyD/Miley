@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^reset-password/complete/$',
         auth_views.PasswordResetDoneView.as_view(template_name='accounts/password_reset_complete.html'),
         name='password_reset_complete'),
+    url(r'^settings', views.account_settings, name='account_settings'),
     url(r'^$', views.home_feed, name='home_feed'),
     url(r'^users/$', views.user_list, name='user_list'),
     url(r'^users.json', views.user_list_json, name='user_list_json'),

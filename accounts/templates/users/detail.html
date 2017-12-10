@@ -43,9 +43,17 @@
 
       {% if request.user.id == user.id %}
         <h2>My Store</h2>
+        <ul>
+          <li>
+            <a href="{% url 'account_settings' %}">Settings</a>
+          </li>
+        </ul>
       {% else %}
         <h2>{{user.username}}</h2>
       {% endif %}
+      <div class="profile type">
+        <p>Profile type: {{user.profile.profile_type}}</p>
+      </div>
       {% for product in products %}
         {% include 'shop/product/_item.html' %}
       {% endfor %}
