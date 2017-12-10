@@ -76,7 +76,7 @@ def home_feed(request):
 
 @login_required
 def user_list(request):
-    users = User.objects.filter(is_active=True)
+    users = Profile.active_user_list(request.user)
     return render(request, 'users/list.html',
         {'section': 'people',
         'users': users})

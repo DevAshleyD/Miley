@@ -27,6 +27,9 @@ class Profile(models.Model):
     def remote_picture(self, url):
         pass
 
+    def active_user_list(user):
+        return User.objects.filter(is_active=True).exclude(id=user.id)
+
 # Add the following field to User dynamically
 User.add_to_class('following', models.ManyToManyField('self', through=Contact,
     related_name='followers', symmetrical=False))

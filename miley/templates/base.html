@@ -47,7 +47,7 @@
 
           <span class="">
             {% if request.user.is_authenticated %}
-              Hello {{ request.user.username }}
+              Hello <a href="{% url 'user_detail' request.user.username %}">{{ request.user.username }}</a>
               {% with total_items=cart|length %}
                 {% if total_items > 0 %}
                 your cart has
