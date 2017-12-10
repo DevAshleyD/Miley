@@ -14,6 +14,14 @@ import json
 from activities.utils import create_activity
 from shop.models import Product
 
+def user_signup(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+    else:
+        form = LoginForm()
+
+    return render(request, 'accounts/signup.html', {'form': form})
+
 def user_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -54,7 +62,7 @@ def home_feed(request):
 @login_required
 def user_list(request):
     users = User.objects.filter(is_active=True)
-    return render(request, 'accounts/user/list.html',
+    return render(request, 'users/list.html',
         {'section': 'people',
         'users': users})
 
@@ -83,7 +91,7 @@ def user_list_json(request):
 def user_detail(request, username):
     user = get_object_or_404(User, username=username)
     products = Product.objects.filter(user=user)
-    return render(request, 'accounts/user/detail.html',
+    return render(request, 'users/detail.html',
         {'section': 'people',
         'user': user,
         'products': products})
