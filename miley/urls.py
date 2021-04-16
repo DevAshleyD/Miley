@@ -12,16 +12,18 @@ Class-based views
 Including another URLconf
     1. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import include, url
-from django.contrib import admin
+#from django.conf.urls import include, url
+from django.urls import path
+#from django.contrib import admin
 from django.conf import settings
-from django.conf.urls.static import static
-from graphene_django.views import GraphQLView
+#from django.conf.urls.static import static
+#from graphene_django.views import GraphQLView
 #from .schema import schema
 from .views import homepage
 
 urlpatterns = [
-    url(r'^$', homepage, name='homepage'),
+    path('', homepage, name='homepage'),
+    #url(r'^$', homepage, name='homepage'),
     #url(r'^admin/', include(admin.site.urls)),
     #url(r'^blog/', include('blog.urls', namespace='blog', app_name='blog')),
     #url(r'^images/', include('images.urls', namespace='images', app_name='images')),
