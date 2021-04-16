@@ -6,3 +6,22 @@
 ![Pay per view platform](https://github.com/shavit/Miley/blob/master/doc/preview-1.png?raw=true)
 ![Pay per view platform](https://github.com/shavit/Miley/blob/master/doc/preview-2.png?raw=true)
 ![Pay per view platform](https://github.com/shavit/Miley/blob/master/doc/preview-3.png?raw=true)
+
+## Config
+
+Required environment variables
+
+Authentication:
+```
+SECRET_KEY
+```
+
+PostgresSQL:
+
+```
+DB_NAME
+DB_USERNAME
+DB_PASSWORD
+DB_HOST
+```
+
