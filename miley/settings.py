@@ -30,6 +30,7 @@ THUMBNAIL_DEBUG = os.environ.get('DEBUG', 0)
 #THUMBNAIL_DEBUG = True
 
 ALLOWED_HOSTS = [
+    '192.168.2.159',
     'localhost',
     'miley.dev'
 ]
@@ -41,25 +42,17 @@ INSTALLED_APPS = (
     #'django.contrib.admin',
     #'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
+    #'django.contrib.sessions',
+    #'django.contrib.messages',
     'django.contrib.staticfiles',
-    'easy_thumbnails',
-    'django.contrib.sites',
-    'django.contrib.sitemaps',
+    #'easy_thumbnails',
+    #'django.contrib.sites',
+    #'django.contrib.sitemaps',
     #'haystack',
-    'taggit',
-    'sorl.thumbnail',
-    'paypal.standard.ipn',
+    #'taggit',
+    #'sorl.thumbnail',
+    #'paypal.standard.ipn',
     #'miley',
-    #'blog',
-    #'images',
-    #'accounts',
-    #'activities',
-    #'shop',
-    #'payments',
-    #'coupons',
-    #'videos',
     # 'graphene_django',
 )
 
@@ -67,10 +60,10 @@ MIDDLEWARE = (
     #'django.middleware.security.SecurityMiddleware',
     #'django.contrib.sessions.middleware.SessionMiddleware',
     #'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     #'django.contrib.auth.middleware.AuthenticationMiddleware',
     #'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 ROOT_URLCONF = 'miley.urls'
@@ -78,7 +71,10 @@ ROOT_URLCONF = 'miley.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'miley', 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,7 +82,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'shop.context_processors.cart',
             ],
             'debug': os.environ.get('DEBUG', 0),
         },
@@ -106,7 +101,7 @@ DATABASES = {
         'USER': os.environ.get('DB_USERNAME', 'postgres'),
         'PASSWORD': os.environ.get('DB_PASSWORD', ''),
         'HOST': os.environ.get('DB_HOST', 'localhost'),
-        'POST': 5432,
+        'PORT': 5432,
     }
 }
 

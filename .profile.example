@@ -2,18 +2,23 @@
 
 . env/bin/activate
 
-export DEBUG=''
-export PORT=''
-export DOCKER_HOST='tcp://127.0.0.1:4243'
-export DOCKER_API_VERSION=''
-export DATABASE_URL=''
-export SMTP_HOST=''
-export SMTP_USER=''
-export SMTP_PASSWORD=''
-export SMTP_PORT=587
-export REDIS_HOST=''
-export REDIS_PORT=''
-export REDIS_DB=''
-export RABBITMQ_URI='amqp://test:test@localhost/miley'
-export PAYPAL_RECEIVER_EMAIL=''
-export PAYPAL_TEST=True
+export DB_HOST=''
+export DB_USERNAME=''
+export DB_PASSWORD=''
+export DB_NAME=''
+
+#export DEBUG=''
+#export PORT=''
+#export DOCKER_HOST='tcp://127.0.0.1:4243'
+#export DOCKER_API_VERSION=''
+#export DATABASE_URL=''
+#export SMTP_HOST=''
+#export SMTP_USER=''
+#export SMTP_PASSWORD=''
+#export SMTP_PORT=587
+#export REDIS_HOST=''
+#export REDIS_PORT=''
+#export REDIS_DB=''
+#export RABBITMQ_URI='amqp://test:test@localhost/miley'
+#export PAYPAL_RECEIVER_EMAIL=''
+#export PAYPAL_TEST=True

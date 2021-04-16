@@ -14,15 +14,16 @@ Including another URLconf
 """
 #from django.conf.urls import include, url
 from django.urls import path
-#from django.contrib import admin
+from django.contrib import admin
 from django.conf import settings
-#from django.conf.urls.static import static
+from django.conf.urls.static import static
 #from graphene_django.views import GraphQLView
 #from .schema import schema
 from .views import homepage
 
 urlpatterns = [
     path('', homepage, name='homepage'),
+    #path('admin/', admin.site.urls),
     #url(r'^$', homepage, name='homepage'),
     #url(r'^admin/', include(admin.site.urls)),
     #url(r'^blog/', include('blog.urls', namespace='blog', app_name='blog')),
