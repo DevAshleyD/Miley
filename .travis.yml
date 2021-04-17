@@ -9,7 +9,6 @@ sudo: required
 services:
   - docker
 before_install:
-  - ls -lah
   - docker-compose ps
 script:
   - docker-compose run web python manage.py test

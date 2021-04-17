@@ -101,14 +101,8 @@ ENV/
 .DS_Store
 .profile
 tmp
-/media/
 /public/
 /cache
 
-miley/public/js/miley.js
-
-.sass-cache
-bourbon
-neat
 node_modules
 .vagrant

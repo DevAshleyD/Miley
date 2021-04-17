@@ -27,8 +27,5 @@ tmp
 
 miley/public/js/miley.js
 
-.sass-cache
-bourbon
-neat
 node_modules
 .vagrant
