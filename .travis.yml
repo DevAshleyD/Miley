@@ -1,14 +1,13 @@
 dist: trusty
+cache: cargo
 env:
   - DOCKER_COMPOSE_VERSION=1.4.2
   - CODECLIMATE_REPO_TOKEN=8e7824579bce2de95ccb9e047fda63a8fc0b93a8cbad68f0edcf3358af77bbd4
-language: python
-python:
-  - "3.6"
-sudo: required
-services:
-  - docker
-before_install:
-  - docker-compose ps
-script:
-  - docker-compose run web python manage.py test
+language: rust
+rust:
+  - nightly
+
+jobs:
+  allow_failures:
+    - rust: nightly
+    fast_finish: true
