@@ -1,9 +1,15 @@
 use tokio_postgres::{NoTls, Error};
+use std::env;
 
 pub async fn db_connect() -> Result<String, Error> {
-    println!("Connect to database");
+    let db_user = env::var("DB_USER").unwrap_or("postgres".to_string());
+    let db_pass = env::var("DB_PASS").unwrap_or("postgres".to_string());
+    let db_host = env::var("DB_HOST").unwrap_or("localhost".to_string());
+    let db_name = env::var("DB_NAME").unwrap_or("postgres".to_string());
+
+    let conn_string = format!("host={} user={} password={} dbname={}", db_host, db_user, db_pass, db_name);
     let (client, connection) =
-        tokio_postgres::connect("host=localhost user=shavit password=1234 dbname=miley", NoTls)
+        tokio_postgres::connect(&conn_string, NoTls)
         .await?;
     println!("Spawn process");
     tokio::spawn(async move {
@@ -11,7 +17,7 @@ pub async fn db_connect() -> Result<String, Error> {
             eprintln!("Connection error: {}", e);
         }
     });
-    println!("Select rows");
+    println!("Testing database connection");
     let rows = client
         .query("SELECT $1::TEXT", &[&"some text"])
         .await?;
@@ -20,5 +26,4 @@ pub async fn db_connect() -> Result<String, Error> {
     assert_eq!(value, "some text");
 
     Ok(value.to_string())
-    //Ok(())
 }
